@@ -13,9 +13,10 @@
 				this.userInfo = {};
 				// 切换页面跳转，使用tab切换的api
 				uni.navigateTo({
-					url: "../login/login"
+					url: "/pages/login/login"
 				});
 			}
+			
 		},
 		onShow: function() {
 			console.log('App Show')
