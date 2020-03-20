@@ -1,0 +1,19 @@
+/* 页面铺满屏幕 */
+.page-fill {
+	width:100%;
+	height: 100%;
+	background-color: #FFFFFF;
+	position: absolute;
+}
+.settings {
+	width: 40rpx;
+	height: 40rpx;
+}
+/* 头部个人信息 end */
+.category-title {
+	margin-top: 30rpx;
+	font-size: 20px;
+	margin-left: 20rpx;
+	font-weight: bold;
+}
+

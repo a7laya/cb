@@ -1,0 +1,119 @@
+.page-block{
+	display: flex;
+	flex-direction: column;
+	/* justify-content: flex-start; */
+}
+
+
+
+/* 搜索框 start */
+.search-block {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	padding: 0upx 20upx 20upx 20upx;
+	/* 固定搜索栏 */
+	position: fixed;
+	top: 70;
+	z-index: 2000;
+	background-color: #F8F8F8;
+}
+
+.plus-ico-wapper {
+	margin-right: 30upx;
+}
+
+
+.search-ico-wapper {
+	/* background-color: #eaeaea; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0upx 10upx;
+}
+
+.search-ico {
+	width: 50upx;
+	height: 50upx;
+}
+
+.search-text {
+	font-size: 19px;
+	background-color: #FFFFFF;
+	height: 50upx;
+	width: 550upx;
+}
+
+/* 搜索框 end */
+
+/* 电池型标题 start */
+.dtu-name {
+	margin-top: 70upx;
+}
+/* 电池型标题 end */
+
+/* 删除弹出框 start */
+
+.button-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.popup-button {
+	margin: 20px;
+}
+
+
+/* 删除弹出框 end */
+
+/* 增加删除弹出框 start */
+
+.add-edit {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	widows: 500upx;
+	height: 250upx;
+}
+
+.add-edit-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+	height: 50upx;
+	margin-top: 50upx;
+}
+
+.row-title-left {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	width: 30%;
+	height: 40upx;
+	margin-right: 15upx;
+}
+
+.row-title-right {
+	width: 65%;
+	height: 40upx;
+	/* background-color: #eaeaea; */
+}
+
+.row-title-text {
+	font-size: 20px;
+}
+
+.row-title-input {
+	font-size: 20px;
+	background-color: #eaeaea;
+}
+
+.popup-button-add {
+	margin-left: 100upx;
+}
+
+/* 增加删除弹出框 start */

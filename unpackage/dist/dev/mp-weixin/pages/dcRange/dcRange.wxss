@@ -1,0 +1,219 @@
+.page-block{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	/* justify-content: flex-start; */
+}
+
+
+
+/* 搜索 start */
+.search {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-justify-content: space-around;
+	    -ms-flex-pack: distribute;
+	        justify-content: space-around;
+	width: 100%;
+	padding: 0rpx 20rpx 20rpx 20rpx;
+	/* 固定搜索栏 */
+	position: fixed;
+	/* top: 70; */
+	z-index: 2000;
+	background-color: #F8F8F8;
+}
+.date-block {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+
+	padding: 0rpx 20rpx 20rpx 20rpx;
+}
+.keywords-block {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+	margin-left: 20rpx;
+	width: 100%;
+	padding: 0rpx 20rpx 20rpx 20rpx;
+}
+.uni-list-cell {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	margin-left: 20rpx;
+}
+.uni-list-cell-db {
+	/* background-color: #A38E62; */
+	margin-left: 10rpx;
+}
+.uni-input-year {
+	/* width: 180upx; */
+	background-color: #A38E62;
+}
+.uni-input-month {
+	/* width: 180upx; */
+	background-color: #A38E62;
+}
+.search-ico-wapper {
+	background-color: #eaeaea;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	padding: 0rpx 10rpx;
+}
+.search-ico {
+	width: 40rpx;
+	height: 40rpx;
+}
+.search-text {
+	font-size: 16px;
+	background-color: #eaeaea;
+	height: 50rpx;
+	width: 80%;
+}
+
+
+
+/* 搜索 end */
+
+
+
+/* 电池型标题 start */
+.vdc-name {
+	margin-top: 140rpx;
+}
+
+
+
+/* 电池型标题 end */
+
+
+
+/* 电池型数据 start */
+.data-block {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+}
+.title {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	width: 30%;
+	height: 50rpx;
+	background-color: #DBDBDB;
+	margin-left: 25rpx;
+	margin-top: 15rpx;
+	margin-right: 5rpx;
+	margin-bottom: 5rpx;
+	padding: 5rpx,5rpx;
+}
+.title-text {
+	font-size: 18px;
+	margin-left: 25rpx;
+}
+.value-text {
+	font-size: 18px;
+	margin-left: 25rpx;
+}
+.value {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	width: 65%;
+	height: 50rpx;
+	background-color: #DDDDDD;
+	margin-left: 5rpx;
+	margin-top: 15rpx;
+	margin-right: 5rpx;
+	margin-bottom: 5rpx;
+	padding: 5rpx,5rpx;
+}
+.data-name {
+	margin-top: 110rpx;
+}
+
+
+
+/* 电池型数据 end */ 
+

@@ -1,0 +1,141 @@
+.page-block{
+	display: flex;
+	flex-direction: column;
+	/* justify-content: flex-start; */
+}
+
+
+
+/* 搜索 start */
+.search {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 100%;
+	padding: 0upx 20upx 20upx 20upx;
+	/* 固定搜索栏 */
+	position: fixed;
+	/* top: 70; */
+	z-index: 2000;
+	background-color: #F8F8F8;
+}
+
+.date-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+
+	padding: 0upx 20upx 20upx 20upx;
+}
+
+.keywords-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-left: 20upx;
+	width: 100%;
+	padding: 0upx 20upx 20upx 20upx;
+}
+
+.uni-list-cell {
+	display: flex;
+	flex-direction: row;
+	margin-left: 20upx;
+}
+
+.uni-list-cell-db {
+	/* background-color: #A38E62; */
+	margin-left: 10upx;
+}
+
+.uni-input-year {
+	/* width: 180upx; */
+	background-color: #A38E62;
+}
+
+.uni-input-month {
+	/* width: 180upx; */
+	background-color: #A38E62;
+}
+
+.search-ico-wapper {
+	/* background-color: #eaeaea; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0upx 10upx;
+}
+
+.search-ico {
+	width: 50upx;
+	height: 50upx;
+}
+
+.search-text {
+	font-size: 19px;
+	background-color: #FFFFFF;
+	height: 50upx;
+	width: 600upx;
+}
+
+/* 搜索 end */
+
+
+
+/* 电池型标题 start */
+.vcs-name {
+	margin-top: 140upx;
+}
+/* 电池型标题 end */
+
+
+
+/* 电池型数据 start */
+.data-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 30%;
+	height: 50upx;
+	background-color: #DBDBDB;
+	margin-left: 25upx;
+	margin-top: 15upx;
+	margin-right: 5upx;
+	margin-bottom: 5upx;
+	padding: 5upx,5upx;
+}
+
+.title-text {
+	font-size: 18px;
+	margin-left: 25upx;
+}
+
+.value-text {
+	font-size: 18px;
+	margin-left: 25upx;
+}
+
+.value {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 65%;
+	height: 50upx;
+	background-color: #DDDDDD;
+	margin-left: 5upx;
+	margin-top: 15upx;
+	margin-right: 5upx;
+	margin-bottom: 5upx;
+	padding: 5upx,5upx;
+}
+
+.data-name {
+	margin-top: 110upx;
+}
+/* 电池型数据 end */

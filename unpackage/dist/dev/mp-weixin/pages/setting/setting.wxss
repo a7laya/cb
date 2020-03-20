@@ -1,0 +1,209 @@
+/* 页面铺满屏幕 */
+.page-fill {
+	width:100%;
+	height: 100%;
+	position: absolute;
+}
+/* 头部个人信息 start */
+.header {
+	padding: 20rpx 30rpx 20rpx 30rpx;
+	/* background-color: #ffd655; */
+	/* background: url(../../static/icons/bg.png) repeat; */
+	
+	display: -webkit-box;
+	
+	display: -webkit-flex;
+	
+	display: -ms-flexbox;
+	
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+}
+.face {
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+	-webkit-flex-shrink: 0;
+	    -ms-flex-negative: 0;
+	        flex-shrink: 0;
+}
+.info-wapper {
+	width: 80%;
+	margin-left: 40rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.nickname {
+	color: #6a5018;
+	font-size: 18px;
+	font-weight: bold;
+}
+.regist-login {
+	margin-left: 60rpx;
+	margin-top: 30rpx;
+}
+.nav-info {
+	color: #a38e62;
+	font-size: 14px;
+	margin-top: 10rpx;
+}
+.set-wapper {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
+	width: 15%;
+}
+.settings {
+	width: 40rpx;
+	height: 40rpx;
+}
+/* 头部个人信息 end */
+/* 中间的 NEXT 大LOGO start */
+.body {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.big-next {
+	font-size: 160rpx;
+	color: #F7F7F7;
+}
+/* 中间的 NEXT 大LOGO end */
+.info-list {
+	/* margin-top: 20upx; */
+	padding: 0rpx 30rpx;
+}
+.info-words {
+	color: #333333;
+	font-size: 16px;
+	width: 25%;
+	line-height: 80rpx;
+	/* font-weight: bold; */
+}
+.face {
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 50%;
+}
+.arrow-block {
+	margin-left: 10rpx;
+	line-height: 86rpx;
+}
+.arrow-ico {
+	width: 30rpx;
+	height: 30rpx;
+}
+.item-wapper {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	/* margin-top: 20upx; */
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+}
+.face-line-upbottom {
+	margin-top: 20rpx;
+	/* margin-bottom: 20upx; */
+	padding-top: 20rpx;
+	padding-bottom: 20rpx;
+}
+.line-top {
+	/* margin-top: 20upx; */
+}
+.right-wapper {
+	width: 80%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
+}
+.gray-fields {
+	font-size: 14px;
+	color: darkgray;
+	line-height: 80rpx;
+}
+/* 底部操作 start */
+.footer-wapper {
+	position: fixed;
+	bottom: 0;
+	
+	display: -webkit-box;
+	
+	display: -webkit-flex;
+	
+	display: -ms-flexbox;
+	
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	width: 100%;
+}
+.footer-words {
+	text-align: center;
+	background-color: white;
+	padding: 20rpx;
+	
+	color: #333333;
+	font-size: 16px;
+}
+/* 底部操作 end */
+

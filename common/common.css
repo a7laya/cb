@@ -1,0 +1,29 @@
+.thline{
+	padding: 0 10upx 0;
+	margin: 20upx 0;
+	line-height: 1upx;
+	border-left: 250upx solid #ddd;
+	border-right: 250upx solid #ddd;
+	text-align: center;
+}
+/* (1)设置全局样式,默认字体大小(28upx),默认行高(1.8),背景色(白色) */
+page{
+	height: 100%;
+	font-size: 28upx;
+	line-height: 1.8;
+	background: #FFFFFF;
+}
+/* (2)图片默认100%宽度 */
+image{width: 100%;}
+/* 主色调 */
+/* 主背景颜色(橙色) */
+.main-bg-color{background: #fd6801;}
+/* 主点击背景颜色(淡淡的橙色) */
+.main-bg-hover-color{background: rgba(253,104,1,0.85);}
+/* 主文字颜色(橙色) */
+.main-text-color{color:#FD6801}
+/* 主边框颜色(淡灰色) */
+.main-border-color{border-color: #F1F1F1;}
+
+/* 输入框颜色(橙色) */
+.input-border-color{border-color: #fd6801;}

@@ -1,0 +1,1 @@
+<view class="page page-block"><view class="cs-block"><view class="title"><text class="title-text">名称</text></view><view class="value"><text class="value-text">{{css.meter_id}}</text></view></view><view class="cs-block"><view class="title"><text class="title-text">位置</text></view><view class="value"><text class="value-text">{{css.location}}</text></view></view></view>

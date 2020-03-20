@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/setting/setting",
+    "pages/dc/dc",
+    "pages/dcSingle/dcSingle",
+    "pages/dtu/dtu",
+    "pages/cs/cs",
+    "pages/dtuSingle/dtuSingle",
+    "pages/csSingle/csSingle",
+    "pages/trash/trash",
+    "pages/dcMonth/dcMonth",
+    "pages/dtuMonth/dtuMonth",
+    "pages/csMonth/csMonth",
+    "pages/dcRange/dcRange",
+    "pages/dtuRange/dtuRange",
+    "pages/csRange/csRange",
+    "pages/changePassword/changePassword",
+    "pages/timerSet/timerSet"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "HuaBang",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

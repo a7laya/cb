@@ -1,0 +1,137 @@
+.page-block{
+	display: flex;
+	flex-direction: column;
+	/* justify-content: flex-start; */
+}
+
+
+
+/* 搜索框 start */
+.search-block {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	padding: 0upx 20upx 20upx 20upx;
+	/* 固定搜索栏 */
+	position: fixed;
+	top: 70;
+	z-index: 2000;
+	background-color: #F8F8F8;
+}
+
+.plus-ico-wapper {
+	margin-right: 30upx;
+}
+
+
+.search-ico-wapper {
+	/* background-color: #eaeaea; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0upx 10upx;
+}
+
+.search-ico {
+	width: 50upx;
+	height: 50upx;
+}
+
+.search-text {
+	font-size: 19px;
+	background-color: #FFFFFF;
+	height: 50upx;
+	width: 400upx;
+}
+
+
+.uni-list-cell {
+	display: flex;
+	flex-direction: row;
+	width: 30%;
+}
+
+
+.uni-input-year {
+	margin-left: 20upx;
+	width: 95upx;
+	/* background-color: #A38E62; */
+}
+
+.uni-input-month {
+	margin-left: 20upx;
+	width: 35upx;
+	/* background-color: #A38E62; */
+}
+
+
+/* 搜索框 end */
+
+/* 电池型 start */
+.the-first_item {
+	margin-top: 30upx;
+	margin-bottom: 10upx;
+	font-size: 20px;
+	margin-left: 20upx;
+	font-weight: bold;
+	color: #2203BB;
+}
+.vdc-name {
+	margin-top: 70upx;
+}
+/* 电池型 end */
+
+
+
+
+/* 电池型数据 start */
+.data-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 30%;
+	height: 50upx;
+	background-color: #DBDBDB;
+	margin-left: 25upx;
+	margin-top: 15upx;
+	margin-right: 5upx;
+	margin-bottom: 5upx;
+	padding: 5upx,5upx;
+}
+
+.title-text {
+	font-size: 18px;
+	margin-left: 25upx;
+}
+
+.value-text {
+	font-size: 18px;
+	margin-left: 25upx;
+}
+
+.value {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 65%;
+	height: 50upx;
+	background-color: #DDDDDD;
+	margin-left: 5upx;
+	margin-top: 15upx;
+	margin-right: 5upx;
+	margin-bottom: 5upx;
+	padding: 5upx,5upx;
+}
+
+.data-name {
+	margin-top: 110upx;
+}
+/* 电池型数据 end */

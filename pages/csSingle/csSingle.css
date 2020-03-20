@@ -1,0 +1,61 @@
+.page-block{
+	display: flex;
+	flex-direction: column;
+	/* justify-content: flex-start; */
+}
+
+/* 电池型数据 start */
+.cs-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 30%;
+	height: 50upx;
+	background-color: #DBDBDB;
+	margin-left: 25upx;
+	margin-top: 15upx;
+	margin-right: 5upx;
+	margin-bottom: 5upx;
+	padding: 5upx,5upx;
+}
+
+.title-text {
+	font-size: 18px;
+	margin-left: 25upx;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.value-text {
+	font-size: 18px;
+	margin-left: 25upx;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.value {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 65%;
+	height: 50upx;
+	background-color: #DDDDDD;
+	margin-left: 5upx;
+	margin-top: 15upx;
+	margin-right: 5upx;
+	margin-bottom: 5upx;
+	padding: 5upx,5upx;
+}
+
+.cs-name {
+	margin-top: 110upx;
+}
+/* 电池型数据 end */
