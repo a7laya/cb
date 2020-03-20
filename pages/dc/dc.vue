@@ -139,7 +139,8 @@
 		onShow() {
 			// 使用挂载方法获取用户数据
 			var userInfo = this.getGlobalUser("userInfo");
-			// debugger;
+			debugger
+			console.log("userInfo:",userInfo)
 			if (userInfo != null) {
 				this.userIsLogin = true;
 				this.userInfo = userInfo;

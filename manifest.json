@@ -59,5 +59,22 @@
 			"urlCheck": false
 		},
 		"usingComponents": true
+	},
+	"h5" : {
+	    "router" : {
+	        "mode" : "hash"
+	    },
+		"devServer": {
+		    "port": 8080,
+		    "disableHostCheck": true,
+		    "proxy": {
+			    "/test": {
+				    "target": "http://122.114.249.24/m",
+				    "changeOrigin": true,
+				    "secure": false,
+				    "pathRewrite":{"^/test":""}
+			    }
+		    }
+		}
 	}
 }

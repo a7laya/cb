@@ -2,15 +2,14 @@
 	<view class="page page-fill">
 
 			<view class="category-title">
-				实时显示
+				{{language["1"][type]}}
 			</view>					
 		
 			<uni-grid :column="3" :show-border="false">
 				<uni-grid-item>
-					
 					<text class="test" style="font-size: 100upx;" @click="dcRuntime">&#xe631;</text>	
 					<!-- <uni-icon type="navigate" size="60"  @click="dcRuntime"></uni-icon> -->
-					<text class="text" @click="dcRuntime">电池型流量计</text>
+					<text class="text" @click="dcRuntime">{{language["1_1"][type]}}</text>
 				</uni-grid-item>
 				<uni-grid-item>
 					<uni-icon type="reload" size="60" @click="dtuRuntime"></uni-icon>
@@ -74,7 +73,7 @@
 	import uniGrid from "@/components/uni-grid/uni-grid.vue";
 	import uniGridItem from "@/components/uni-grid-item/uni-grid-item.vue";
 	import uniIcon from "@/components/uni-icon/uni-icon.vue";
-	
+	import {mapState} from "vuex"
 	export default {
 		components: {uniGrid, uniGridItem, uniIcon},
 		data() {
@@ -82,6 +81,12 @@
 				userIsLogin: false,
 				userInfo: {},
 			}
+		},
+		computed:{
+			...mapState({
+				language: state => state.language.language,
+				type: state => state.language.type
+			}),
 		},
 		
 		onShow() {
@@ -102,7 +107,10 @@
 		},
 		
 		onLoad() {
-
+			this.$H.get('/Lan/tableData')
+			.then((res) => {
+				console.log("res:",res);
+			})
 		},
 			
 		onReady() {

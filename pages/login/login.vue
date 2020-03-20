@@ -1,21 +1,28 @@
 <template>
 	<view class="body">
 		<form @submit="formSubmit">
+			<view class="d-flex position-absolute text-muted" style="top: 10rpx;right: 15rpx;">
+				<view class="mr-1" :class="{'active animated flipInX':type == 'cn'}" @click="setLanguageType('cn')">中文</view>|
+				<view class="mx-1" :class="{'active animated flipInX':type == 'en'}" @click="setLanguageType('en')">English</view>|
+				<view class="ml-1" :class="{'active animated flipInX':type == 'other'}" @click="setLanguageType('other')">日本語</view>
+			</view>
 			<view class="face-wapper">
-				<image src="../../static/icons/default-face.png" class="face"></image>
+				<image src="../../static/icons/default-face.png" class="face animated flipInX"></image>
 			</view>
 			
-			<view class="info-wapper">
-				<label class="words-lbl">账号</label>
-				<input name="username" type="text" value="" class="input" placeholder="请输入用户名" placeholder-class="graywords"/>
+			<view class="info-wapper d-flex a-center j-end">
+				<view class="text-muted text-center" style="width: 160rpx;">{{username}}</view>
+				<input name="username" type="text" value="" class="input p-1 border" placeholder="请输入用户名" placeholder-class="graywords"/>
 			</view>
 			
-			<view class="info-wapper" style="margin-top: 40upx;">
-				<label class="words-lbl">密码</label>
-				<input name="password" type="text" value="" password="true" class="input" placeholder="请输入密码" placeholder-class="graywords"/>
+			<view class="info-wapper d-flex a-center j-end" style="margin-top: 40upx;">
+				<view class="text-muted text-center" style="width: 160rpx;">{{password}}</view>
+				<input name="password" type="text" value="" password="true" class="input p-1 border" placeholder="请输入密码" placeholder-class="graywords"/>
 			</view>
 			
-			<button type="primary" form-type="submit" style="margin-top: 60upx;width: 90%;">登录</button>
+			
+			
+			<button type="primary" form-type="submit" style="margin-top: 60upx;width: 90%;">{{title}}</button>
 		</form>
 		
 
@@ -24,21 +31,58 @@
 
 
 <script>
+	import {mapState,mapMutations} from 'vuex'
 	export default {
 		data() {
 			return {
-				
+				titleObj: {
+					cn: "登录",
+					en: "Login",
+					other: "ログイン"
+				},
+				usernameObj: {
+					cn: "账 号",
+					en: "ID",
+					other: "アカウント"
+				},
+				passwordObj: {
+					cn: "密 码",
+					en: "password",
+					other: "パスワード"
+				}
 			};
 		},
+		watch:{
+			type(newVal, oldVal){
+				uni.setNavigationBarTitle({
+					title:this.titleObj[newVal]
+				})
+				
+			}
+		},
+		computed:{
+			// vuex映射userInfo
+			...mapState({
+				userInfo: state => state.user.userInfo,
+				language: state => state.language.language,
+				type: state => state.language.type
+			}),
+			username(){
+				return this.usernameObj[this.type]
+			},
+			password(){
+				return this.passwordObj[this.type]
+			},
+			title(){
+				return this.titleObj[this.type]
+			},
+		},
 		methods: {
-
+			...mapMutations(['setUserInfo','setLanguage','setLanguageType']),
 			formSubmit (e) {
 				var me = this;
 				var username = e.detail.value.username;
 				var password = e.detail.value.password;
-				// console.log(username);
-				// console.log(password);
-
 				// 发起登录的请求
 				var serverUrl = me.serverUrl;
 				uni.request({
@@ -48,7 +92,7 @@
 						password: password
 					},
 					header: {
-						'content-type': 'application/x-www-form-urlencoded' //自定义请求头信息
+						'content-type': 'application/x-www-form-urlencoded' ,//自定义请求头信息
 					},
 					method: "POST",
 					success: (res) => {
@@ -57,10 +101,25 @@
 						// 获取真实数据之前，务必判断状态是否为200
 						if (res.data.code == 0) {
 							var userInfo = res.data.data;
-							// console.log(userInfo);
+							
+							// 用vux保存用户信息
+							// this.setUserInfo(userInfo)
+							
 							// 保存用户信息到全局的缓存中
 							uni.setStorageSync("userInfo", userInfo);
-
+							
+							// 获取语言列表
+							this.$H.get('/Lan/tableData',{},{
+								header: {
+									// "Content-Type": "application/json;charset=UTF-8",
+									"Content-Type": "application/x-www-form-urlencoded",
+									token: userInfo.token
+								}
+							}).then(data=>{
+								this.setLanguage(data)
+								console.log("this.language:",this.language)
+							})
+							
 							// 切换页面跳转，使用tab切换的api
 							uni.navigateTo({
 								url: "../index/index"
@@ -83,4 +142,10 @@
 
 <style>
 	@import url("login.css");
+	.active {
+		color: #DC3545;
+	}
+	.input {
+		margin-left: 5px;
+	}
 </style>
