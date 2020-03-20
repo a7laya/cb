@@ -17,13 +17,13 @@ page{
 image{width: 100%;}
 /* 主色调 */
 /* 主背景颜色(橙色) */
-.main-bg-color{background: #fd6801;}
+.main-bg-color{background: #0288D1;}
 /* 主点击背景颜色(淡淡的橙色) */
-.main-bg-hover-color{background: rgba(253,104,1,0.85);}
+.main-bg-hover-color{background: #03A9F4;}
 /* 主文字颜色(橙色) */
-.main-text-color{color:#FD6801}
+.main-text-color{color:#0288D1}
 /* 主边框颜色(淡灰色) */
 .main-border-color{border-color: #F1F1F1;}
 
 /* 输入框颜色(橙色) */
-.input-border-color{border-color: #fd6801;}
+.input-border-color{border-color: #0288D1;}

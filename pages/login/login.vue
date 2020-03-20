@@ -10,19 +10,19 @@
 				<image src="../../static/icons/default-face.png" class="face animated flipInX"></image>
 			</view>
 			
-			<view class="info-wapper d-flex a-center j-end">
+			<view class="info-wapper d-flex a-center j-end animated fadeInLeft fast">
 				<view class="text-muted text-center" style="width: 160rpx;">{{username}}</view>
-				<input name="username" type="text" value="" class="input p-1 border" placeholder="请输入用户名" placeholder-class="graywords"/>
+				<input name="username" type="text" value="" class="input p-1 border rounded" placeholder-class="graywords"/>
 			</view>
 			
-			<view class="info-wapper d-flex a-center j-end" style="margin-top: 40upx;">
+			<view class="info-wapper d-flex a-center j-end animated fadeInRight fast" style="margin-top: 40upx;">
 				<view class="text-muted text-center" style="width: 160rpx;">{{password}}</view>
-				<input name="password" type="text" value="" password="true" class="input p-1 border" placeholder="请输入密码" placeholder-class="graywords"/>
+				<input name="password" type="text" value="" password="true" class="input p-1 border rounded" placeholder-class="graywords"/>
 			</view>
 			
 			
 			
-			<button type="primary" form-type="submit" style="margin-top: 60upx;width: 90%;">{{title}}</button>
+			<button  form-type="submit" style="margin-top: 60upx;width: 90%;" class="main-bg-hover-color text-white animated fadeInUp fast">{{title}}</button>
 		</form>
 		
 
@@ -31,7 +31,6 @@
 
 
 <script>
-	import {mapState,mapMutations} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -49,8 +48,12 @@
 					cn: "密 码",
 					en: "password",
 					other: "パスワード"
-				}
+				},
+				type: 'cn'
 			};
+		},
+		onShow() {
+			this.type = uni.getStorageSync('type') || this.type
 		},
 		watch:{
 			type(newVal, oldVal){
@@ -61,12 +64,6 @@
 			}
 		},
 		computed:{
-			// vuex映射userInfo
-			...mapState({
-				userInfo: state => state.user.userInfo,
-				language: state => state.language.language,
-				type: state => state.language.type
-			}),
 			username(){
 				return this.usernameObj[this.type]
 			},
@@ -75,10 +72,13 @@
 			},
 			title(){
 				return this.titleObj[this.type]
-			},
+			}
 		},
 		methods: {
-			...mapMutations(['setUserInfo','setLanguage','setLanguageType']),
+			setLanguageType(type) {
+				this.type = type
+				uni.setStorageSync('type',type)
+			},
 			formSubmit (e) {
 				var me = this;
 				var username = e.detail.value.username;
@@ -113,11 +113,13 @@
 								header: {
 									// "Content-Type": "application/json;charset=UTF-8",
 									"Content-Type": "application/x-www-form-urlencoded",
-									token: userInfo.token
+									"id": userInfo.user_id,
+									"token": userInfo.token
 								}
 							}).then(data=>{
-								this.setLanguage(data)
-								console.log("this.language:",this.language)
+								uni.setStorageSync("language", data);
+								// this.setLanguage(data)
+								// console.log("this.language:",this.language)
 							})
 							
 							// 切换页面跳转，使用tab切换的api

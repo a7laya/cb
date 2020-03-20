@@ -6,7 +6,9 @@
 				// "app-plus" : {
 				//     "titleNView" : false //禁用原生导航栏
 				// },
-				"navigationBarTitleText": "智慧水务"
+				"navigationBarTitleText": "智慧水务",
+				"navigationBarBackgroundColor":"#0288D1",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{

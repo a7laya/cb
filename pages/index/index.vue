@@ -1,70 +1,79 @@
 <template>
 	<view class="page page-fill">
-
-			<view class="category-title">
-				{{language["1"][type]}}
-			</view>					
+			<view class="category-title1 border-bottom d-flex a-center px-2 py-1 animated fadeInLeft faster">
+					{{language["1"][type]}}
+			</view>
 		
 			<uni-grid :column="3" :show-border="false">
-				<uni-grid-item>
-					<text class="test" style="font-size: 100upx;" @click="dcRuntime">&#xe631;</text>	
-					<!-- <uni-icon type="navigate" size="60"  @click="dcRuntime"></uni-icon> -->
+				<uni-grid-item class="animated fadeInLeft faster">
+					<text class="test" style="font-size: 80upx;" @click="dcRuntime">&#xe64b;</text>	
 					<text class="text" @click="dcRuntime">{{language["1_1"][type]}}</text>
 				</uni-grid-item>
-				<uni-grid-item>
-					<uni-icon type="reload" size="60" @click="dtuRuntime"></uni-icon>
-					<text class="text" @click="dtuRuntime">电磁型流量计</text>
+				<uni-grid-item class="animated fadeInUp faster">
+					<text class="test" style="font-size: 80upx;" @click="dtuRuntime">&#xe6ed;</text>
+					<text class="text" @click="dtuRuntime">{{language["1_2"][type]}}</text>
 				</uni-grid-item>
-				<uni-grid-item>
-					<uni-icon type="flag" size="60" @click="csRuntime"></uni-icon>
-					<text class="text" @click="csRuntime">超声波流量计</text>
+				<uni-grid-item class="animated fadeInRight faster">
+					<text class="test" style="font-size: 80upx;" @click="csRuntime">&#xe63a;</text>
+					<text class="text" @click="csRuntime">{{language["1_3"][type]}}</text>
 				</uni-grid-item>
-				<uni-grid-item>
-					<uni-icon type="trash" size="60" color="#09BB07" @click="trash"></uni-icon>
-					<text class="text" @click="trash">回收站</text>
-				</uni-grid-item>
-				<uni-grid-item>
-					<uni-icon type="gear-filled" size="60" @click="setting"></uni-icon>
-					<text class="text" @click="setting">设置</text>
-				</uni-grid-item>
+				
 			</uni-grid>
 
 			
-			<view class="category-title">
-				数据查询
-			</view>
+			<divider></divider>
 			
+			<view class="category-title1 border-bottom d-flex a-center px-2 py-1 animated fadeInLeft fast">
+					{{language["2"][type]}}
+			</view>
 
 				
 			<uni-grid :column="3"  :show-border="false">
 			
-				<uni-grid-item>						
-					<text class="test" style="font-size: 95upx;margin-bottom: 8upx;" @click="dcMonth">&#xe665;</text>	
-					<text class="text" @click="dcMonth">电池型按月份</text>
+				<uni-grid-item class="animated fadeInUp faster">						
+					<text class="test" style="font-size: 80upx;" @click="dcMonth">&#xe68a;</text>	
+					<text class="text" @click="dcMonth">{{language["2_1"][type]}}</text>
 				</uni-grid-item>
-				<uni-grid-item>
-					<text class="test" style="font-size: 95upx;margin-bottom: 8upx;" @click="dcRange">&#xe655;</text>	
-					<text class="text" @click="dcRange">电池型按区间</text>
+				<uni-grid-item class="animated fadeInUp faster">
+					<text class="test" style="font-size: 80upx;" @click="dcRange">&#xe6b4;</text>	
+					<text class="text" @click="dcRange">{{language["2_2"][type]}}</text>
 				</uni-grid-item>
-				<uni-grid-item>
-					<text class="test" style="font-size: 95upx;margin-bottom: 8upx;" @click="dtuMonth">&#xe628;</text>					
-					<text class="text" @click="dtuMonth">电磁型按月份</text>
+				<uni-grid-item class="animated fadeInUp faster">
+					<text class="test" style="font-size: 80upx;" @click="dtuMonth">&#xe68a;</text>					
+					<text class="text" @click="dtuMonth">{{language["2_3"][type]}}</text>
 				</uni-grid-item>
-				<uni-grid-item>
-					<text class="test" style="font-size: 95upx;margin-bottom: 8upx;" @click="dtuRange">&#xe63c;</text>					
-					<text class="text" @click="dtuRange">电磁型按区间</text>
+				<uni-grid-item class="animated fadeInDown faster">
+					<text class="test" style="font-size: 80upx;" @click="dtuRange">&#xe6b4;</text>					
+					<text class="text" @click="dtuRange">{{language["2_4"][type]}}</text>
 				</uni-grid-item>
-				<uni-grid-item>					
-					<text class="test" style="font-size: 95upx;margin-bottom: 8upx;" @click="csMonth">&#xe60e;</text>
-					<text class="text" @click="csMonth">超声波按月份</text>
+				<uni-grid-item class="animated fadeInDown faster">					
+					<text class="test" style="font-size: 80upx;" @click="csMonth">&#xe68a;</text>
+					<text class="text" @click="csMonth">{{language["2_5"][type]}}</text>
 				</uni-grid-item>
-				<uni-grid-item>					
-					<text class="test" style="font-size: 95upx;margin-bottom: 8upx;" @click="csRange">&#xe663;</text>	
-					<text class="text" @click="csRange">超声波按区间</text>
+				<uni-grid-item class="animated fadeInDown faster">					
+					<text class="test" style="font-size: 80upx;" @click="csRange">&#xe6b4;</text>	
+					<text class="text" @click="csRange">{{language["2_6"][type]}}</text>
 				</uni-grid-item>
 
-			</uni-grid>		
-
+			</uni-grid>	
+			
+			<divider></divider>
+			
+			<view class="category-title1 border-bottom d-flex a-center px-2 py-1 animated fadeInLeft fast">
+					{{language["3"][type]}}
+			</view>
+			
+				
+			<uni-grid :column="3"  :show-border="false">
+				<uni-grid-item class="animated fadeInDown faster">
+					<text class="test" style="font-size: 80upx;" @click="trash">&#xe620;</text>
+					<text class="text" @click="trash">{{language["1_4"][type]}}</text>
+				</uni-grid-item>
+				<uni-grid-item class="animated fadeInDown faster">
+					<text class="test" style="font-size: 80upx;" @click="setting">&#xe61f;</text>
+					<text class="text" @click="setting">{{language["3"][type]}}</text>
+				</uni-grid-item>
+			</uni-grid>	
 	</view>
 	
 </template>
@@ -73,50 +82,34 @@
 	import uniGrid from "@/components/uni-grid/uni-grid.vue";
 	import uniGridItem from "@/components/uni-grid-item/uni-grid-item.vue";
 	import uniIcon from "@/components/uni-icon/uni-icon.vue";
-	import {mapState} from "vuex"
+	import { mapState } from "vuex"
 	export default {
 		components: {uniGrid, uniGridItem, uniIcon},
 		data() {
 			return {
 				userIsLogin: false,
 				userInfo: {},
+				language: {},
+				type: 'cn'
 			}
 		},
 		computed:{
-			...mapState({
-				language: state => state.language.language,
-				type: state => state.language.type
-			}),
+			// ...mapState({
+			// 	language: state => state.language.language,
+			// 	type:     state => state.language.type
+			// }),
 		},
 		
-		onShow() {
-			// 使用挂载方法获取用户数据
-			var userInfo = this.getGlobalUser("userInfo");
-			// debugger;
-			if (userInfo != null) {
-				this.userIsLogin = true;
-				this.userInfo = userInfo;
-			} else {
-				this.userIsLogin = false;
-				this.userInfo = {};
-				// 切换页面跳转，使用tab切换的api
-				uni.navigateTo({
-					url: "../login/login"
-				});
-			}
-		},
-		
-		onLoad() {
-			this.$H.get('/Lan/tableData')
-			.then((res) => {
-				console.log("res:",res);
+		onShow() { 
+			console.log('123');
+			this.language = uni.getStorageSync('language')
+			this.type = uni.getStorageSync('type')
+			console.log(this.language['page_title'][this.type]);
+			uni.setNavigationBarTitle({
+				title:this.language['page_title'][this.type]
 			})
 		},
-			
 		onReady() {
-			uni.navigateTo({
-				url: "index"
-			})
 		},		
 		
 		methods: {

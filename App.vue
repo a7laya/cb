@@ -2,6 +2,20 @@
 	export default {
 		onLaunch: function() {
 			console.log('App onLaunch')
+			// 使用挂载方法获取用户数据
+			var userInfo = this.getGlobalUser("userInfo");
+			// debugger;
+			if (userInfo != null) {
+				this.userIsLogin = true;
+				this.userInfo = userInfo;
+			} else {
+				this.userIsLogin = false;
+				this.userInfo = {};
+				// 切换页面跳转，使用tab切换的api
+				uni.navigateTo({
+					url: "../login/login"
+				});
+			}
 		},
 		onShow: function() {
 			console.log('App Show')
@@ -25,16 +39,25 @@
 	@import "/common/common.css";
 	/* 自定义框架库 */
 	@import "/common/zcm-main.css";
+	
+	/* 图标 */
+	@font-face {
+		font-family: 'iconfont';
+		src: url('~@/static/font/iconfont.ttf') format('truetype');
+	}
+	.test {
+		font-family: iconfont;
+		color: #00BCD4;
+		margin: -30rpx 0;
+		/* margin-left: 20rpx; */
+	}
 	.page {
 		width: 100%;
 		height: 100%;
-		background-color: #f7f7f7;
+		background-color: #FFFFFF;
 		/* position: absolute;		 */
 	}
 	
-	.page-block {
-		background-color: #ffffff;
-	}
 	
 	.line-wapper {
 		padding: 0upx 20upx;
@@ -44,7 +67,7 @@
 		background-color: #DBDBDA;
 	}
 	/* 每个页面公共css  end*/
-	
+/* 	
 	@font-face {
 	    font-family: 'iconfont';
 	    src: url('~@/static/icons/iconfont.ttf') format('truetype');
@@ -52,7 +75,7 @@
 	.test {
 	    font-family: iconfont;
 	    margin-left: 20rpx;
-	}
+	} */
 	
 	
 </style>
