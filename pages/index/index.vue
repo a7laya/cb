@@ -6,16 +6,16 @@
 		
 			<uni-grid :column="3" :show-border="false">
 				<uni-grid-item class="animated fadeInLeft faster">
-					<text class="test" style="font-size: 80upx;" @click="dcRuntime">&#xe64b;</text>	
-					<text class="text" @click="dcRuntime">{{language["1_1"][type]}}</text>
+					<text class="test" style="font-size: 80upx;" @click="openMeterList('dc')">&#xe64b;</text>	
+					<text class="text" @click="openMeterList('dc')">{{language["1_1"][type]}}</text>
 				</uni-grid-item>
 				<uni-grid-item class="animated fadeInUp faster">
-					<text class="test" style="font-size: 80upx;" @click="dtuRuntime">&#xe6ed;</text>
-					<text class="text" @click="dtuRuntime">{{language["1_2"][type]}}</text>
+					<text class="test" style="font-size: 80upx;" @click="openMeterList('dtu')">&#xe6ed;</text>
+					<text class="text" @click="openMeterList('dtu')">{{language["1_2"][type]}}</text>
 				</uni-grid-item>
 				<uni-grid-item class="animated fadeInRight faster">
-					<text class="test" style="font-size: 80upx;" @click="csRuntime">&#xe63a;</text>
-					<text class="text" @click="csRuntime">{{language["1_3"][type]}}</text>
+					<text class="test" style="font-size: 80upx;" @click="openMeterList('cs')">&#xe63a;</text>
+					<text class="text" @click="openMeterList('cs')">{{language["1_3"][type]}}</text>
 				</uni-grid-item>
 				
 			</uni-grid>
@@ -113,6 +113,12 @@
 		},		
 		
 		methods: {
+			// 打开水表实时流量
+			openMeterList(meterType){
+				uni.navigateTo({
+					url: "../meter/meter?meterType=" + meterType
+				})
+			},
 			dcRuntime() {
 				// debugger;
 				uni.navigateTo({

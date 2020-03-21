@@ -204,7 +204,7 @@
 			var me = this;
 			var userInfo = me.getGlobalUser("userInfo");
 			// 获取上一个页面传入的参数
-			var csId= params.csId;
+			var csId= params.meterId;
 
 			uni.showLoading({
 				mask: true,

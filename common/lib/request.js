@@ -1,10 +1,19 @@
 export default {
+	// 获取用户信息
+	getUserInfo(){
+		var userInfo = uni.getStorageSync("userInfo");
+		if (userInfo != null && userInfo != "" && userInfo != undefined) {
+			return userInfo;
+		} else {
+			return null;
+		}
+	},
 	// 全局配置
 	common: { 
 		baseUrl: "/test",
 		header: {
 			// "Content-Type": "application/json;charset=UTF-8",
-			"Content-Type": "application/x-www-form-urlencoded",
+			"Content-Type": "application/x-www-form-urlencoded"
 		},
 		data: {},
 		method: "GET",
@@ -14,7 +23,12 @@ export default {
 	request(options = {}) {
 		// 组织参数
 		options.url      = this.common.baseUrl + options.url
-		options.header   = options.header   || this.common.header
+		options.header   = options.header   ||  {
+			// "Content-Type": "application/json;charset=UTF-8",
+			"Content-Type": "application/x-www-form-urlencoded",
+			"id": this.getUserInfo() && this.getUserInfo().user_id,
+			"token": this.getUserInfo() && this.getUserInfo().token,
+		},
 		options.data     = options.data     || this.common.data
 		options.method   = options.method   || this.common.method
 		options.dataType = options.dataType || this.common.dataType

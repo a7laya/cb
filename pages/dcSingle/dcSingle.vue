@@ -149,7 +149,7 @@
 			var me = this;
 			var userInfo = me.getGlobalUser("userInfo");
 			// 获取上一个页面传入的参数
-			var dcId= params.dcId;
+			var meterId= params.meterId;
 			
 			uni.showLoading({
 				mask: true,
@@ -160,7 +160,7 @@
 			// 获取详细信息
 			var serverUrl = me.serverUrl;
 			uni.request({
-				url: serverUrl + '/dcs/single?id=' + dcId,
+				url: serverUrl + '/dcs/single?id=' + meterId,
 				header:{
 					'content-type': 'application/x-www-form-urlencoded',
 					'id':userInfo.user_id,
@@ -173,7 +173,6 @@
 					if (res.data.code == 0) {
 						var dcs = res.data.data;
 						me.dcs = dcs;
-						
 					}
 				},
 				complete: () => {

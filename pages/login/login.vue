@@ -22,7 +22,9 @@
 			
 			
 			
-			<button  form-type="submit" style="margin-top: 60upx;width: 90%;" class="main-bg-hover-color text-white animated fadeInUp fast">{{title}}</button>
+			<button  form-type="submit" style="margin-top: 60upx;width: 90%;" 
+			class="main-bg-hover-color text-white animated fadeInUp fast" 
+			hover-class="bg-primary">{{title}}</button>
 		</form>
 		
 
@@ -109,17 +111,8 @@
 							uni.setStorageSync("userInfo", userInfo);
 							
 							// 获取语言列表
-							this.$H.get('/Lan/tableData',{},{
-								header: {
-									// "Content-Type": "application/json;charset=UTF-8",
-									"Content-Type": "application/x-www-form-urlencoded",
-									"id": userInfo.user_id,
-									"token": userInfo.token
-								}
-							}).then(data=>{
+							this.$H.get('/Lan/tableData').then(data=>{
 								uni.setStorageSync("language", data);
-								// this.setLanguage(data)
-								// console.log("this.language:",this.language)
 							})
 							
 							// 切换页面跳转，使用tab切换的api

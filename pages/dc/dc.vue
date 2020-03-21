@@ -1,28 +1,10 @@
 <template>
 	<view class="page page-block">
-
+		<!-- 搜索栏 -->
+		<search-bar :keywords="keywords" @add="add" @search="searchMe"></search-bar>
 		
-		<view class="search-block">
-			<view class="plus-ico-wapper">
-				<text class="test" style="font-size: 50upx;" @click="add">&#xe654;</text>	
-				<!-- <uni-icon type="plus" class="plus" size="20" @click="add"></uni-icon>	 -->
-			</view>
-			<input 
-				placeholder="搜索ID|位置" 
-				maxlength="10" 
-				class="search-text" 
-				confirm-type="search"
-				v-model="keywords"
-				@confirm="searchMe"
-			/>
-			
-			<view class="search-ico-wapper">
-				<image src="../../static/icons/search.png" class="search-ico" @click="searchMe"></image>
-			</view>
-			
-		</view>
-		
-		<view class="dc-name">
+		<view style="height: 100rpx;"></view>
+		<view class="">
 			<uni-list>
 				<view class="" v-for="(dc,index) in dcList" :key="index">
 					<view class="" :data-dcid="dc.id" :data-dcindex="index" @click="showdc" @longtap="operator" >
@@ -117,11 +99,12 @@
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue';
 	import uniPopup from "@/components/uni-popup/uni-popup.vue";
 	import uniIcon from "@/components/uni-icon/uni-icon.vue";
-	
+	import searchBar from "@/components/a7laya/search-bar.vue"
 	export default {
-		components: {uniList, uniListItem, uniPopup, uniIcon},
+		components: {searchBar, uniList, uniListItem, uniPopup, uniIcon},
 		data() {
 			return {
+				meterType: '',          // 水表类型
 				dcList: [],
 				keywords: "",			// 搜索的关键字
 				page: 1,				// 当前第几页
@@ -137,21 +120,13 @@
 		},
 		
 		onShow() {
-			// 使用挂载方法获取用户数据
-			var userInfo = this.getGlobalUser("userInfo");
-			// debugger
-			console.log("userInfo:",userInfo)
-			if (userInfo != null) {
-				this.userIsLogin = true;
-				this.userInfo = userInfo;
-			} else {
-				this.userIsLogin = false;
-				this.userInfo = {};
-				// 切换页面跳转，使用tab切换的api
-				uni.navigateTo({
-					url: "../login/login"
-				});
-			}
+			console.log('123');
+			this.language = uni.getStorageSync('language')
+			this.type = uni.getStorageSync('type')
+			console.log(this.language['1_1'][this.type]);
+			uni.setNavigationBarTitle({
+				title:this.language['1_1'][this.type]
+			})
 		},
 		
 		onLoad() {
@@ -407,14 +382,8 @@
 			},
 			
 			searchMe(e) {
-				var me = this;
-				// 获取搜索的内容
-				// debugger;
-				// var value = e.detail.value;
-				var value = me.keywords;
-				me.dcList = [];
-				
-				me.pageddcList(value, 1, 15);
+				this.dcList = [];
+				this.pageddcList(e, 1, 15);
 			},
 			
 			operator(e) {

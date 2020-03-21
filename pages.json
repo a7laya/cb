@@ -25,6 +25,16 @@
             }
         }
         ,{
+            "path" : "pages/meter/meter",
+			"style": {
+				"app-plus":{
+					"titleNView":false,
+					"bounce":"none",
+					"scrollIndicator":"none"
+				}
+			}
+        }
+        ,{
             "path" : "pages/dc/dc",
             "style" : {"navigationBarTitleText": "电池型实时列表"}
         }
@@ -88,8 +98,9 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "HuaBang",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor":"#0288D1",
+		"navigationBarTextStyle":"white"
 	}
 
 }
