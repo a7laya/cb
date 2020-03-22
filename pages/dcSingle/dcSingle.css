@@ -1,10 +1,13 @@
-.page-block{
-	display: flex;
-	flex-direction: column;
-	/* justify-content: flex-start; */
-}
+
 
 /* 电池型数据 start */
+
+
+.table {
+	box-sizing: border-box;
+	padding: 20rpx;
+}
+
 .dc-block {
 	display: flex;
 	flex-direction: row;
@@ -14,42 +17,42 @@
 .title {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	width: 30%;
-	height: 50upx;
-	background-color: #DBDBDB;
-	margin-left: 25upx;
-	margin-top: 15upx;
-	margin-right: 5upx;
-	margin-bottom: 5upx;
-	padding: 5upx,5upx;
+	justify-content: start;
+	width: 40%;
+	margin: 5rpx 10rpx;
 }
 
 .title-text {
-	font-size: 18px;
-	margin-left: 25upx;
+	font-size: 24rpx;
+	padding: 10rpx;
+	padding-right: 20rpx;
+	background-color: #c1f5f5;
+	color: #085f73;
+	text-align: right;
 }
 
 .value-text {
-	font-size: 18px;
-	margin-left: 25upx;
+	font-size: 24rpx;
+	padding: 10rpx;
+	padding-left: 20rpx;
+	height: 100%;
+	background-color: #c1f5f5;
+	color: #085f73;
+	text-align: left;
+	display: flex;
+	align-items: center;
 }
 
 .value {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	width: 65%;
-	height: 50upx;
-	background-color: #DDDDDD;
-	margin-left: 5upx;
-	margin-top: 15upx;
-	margin-right: 5upx;
-	margin-bottom: 5upx;
-	padding: 5upx,5upx;
+	justify-content: start;
+	width: 55%;
+	margin: 5rpx 0;
 }
 
 .dc-name {
 	margin-top: 110upx;
 }
+
 /* 电池型数据 end */

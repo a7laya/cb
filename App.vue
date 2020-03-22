@@ -2,24 +2,10 @@
 	export default {
 		onLaunch: function() {
 			console.log('App onLaunch')
-			// 使用挂载方法获取用户数据
-			var userInfo = this.getGlobalUser("userInfo");
-			// debugger;
-			if (userInfo != null) {
-				this.userIsLogin = true;
-				this.userInfo = userInfo;
-			} else {
-				this.userIsLogin = false;
-				this.userInfo = {};
-				// 切换页面跳转，使用tab切换的api
-				uni.navigateTo({
-					url: "/pages/login/login"
-				});
-			}
-			
 		},
 		onShow: function() {
 			console.log('App Show')
+			
 		},
 		onHide: function() {
 			console.log('App Hide')
@@ -67,16 +53,8 @@
 		height: 1px;
 		background-color: #DBDBDA;
 	}
-	/* 每个页面公共css  end*/
-/* 	
-	@font-face {
-	    font-family: 'iconfont';
-	    src: url('~@/static/icons/iconfont.ttf') format('truetype');
-	}
-	.test {
-	    font-family: iconfont;
-	    margin-left: 20rpx;
-	} */
+	
+
 	
 	
 </style>

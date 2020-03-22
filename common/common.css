@@ -16,14 +16,16 @@ page{
 /* (2)图片默认100%宽度 */
 image{width: 100%;}
 /* 主色调 */
-/* 主背景颜色(橙色) */
+/* 主背景颜色(深蓝) */
 .main-bg-color{background: #0288D1;}
-/* 主点击背景颜色(淡淡的橙色) */
+/* 主点击背景颜色(蓝色) */
 .main-bg-hover-color{background: #03A9F4;}
-/* 主文字颜色(橙色) */
-.main-text-color{color:#0288D1}
+/* 正文背景 (淡蓝色)*/
+.main-bg-light-color{background: #c1f5f5;}
+/* 主文字颜色(墨蓝) */
+.main-text-color{color:#085f73}
 /* 主边框颜色(淡灰色) */
 .main-border-color{border-color: #F1F1F1;}
 
-/* 输入框颜色(橙色) */
+/* 输入框边框颜色(深蓝) */
 .input-border-color{border-color: #0288D1;}

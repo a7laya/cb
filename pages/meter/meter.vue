@@ -5,13 +5,13 @@
 		
 		<view>
 			<!-- 搜索组件带title是180rpx的高度 不带是100rpx的高度 -->
-			<view class="w-100 main-bg-color" style="height: 180rpx;"></view>
+			<view class="w-100" style="height: 180rpx; background-color: #00c6dc;"></view>
 			<uni-list>
 				<view v-for="(meter,index) in meterList" :key="index" 
-				@click="showMeter" @longtap="operator($event,meter,index)">
+				@click="showMeter(meter.id)" @longtap="operator($event,meter,index)">
 					<uni-list-item>
 						<view class="d-flex a-center">
-							<text class="test mr-1" style="font-size: 50upx;" @click="openMeterList('dc')">&#xe611;</text>
+							<text class="test mr-1" style="font-size: 50upx;">&#xe611;</text>
 							{{meter.location}} [{{meter.meter_id}}]
 						</view>
 					</uni-list-item>
@@ -26,7 +26,7 @@
 			<view class="w-100 text-danger font-md text-center">"{{language['meter'][type]}} : {{editId}}"</view>
 		    {{language['delete_confirm'][type]}}
 			<view class="button-block">
-				<button class="popup-button" type="warn" plain="true" :data-meterid="selectid" @click="confirmDelete">{{language['confirm'][type]}}</button>
+				<button class="popup-button" type="warn" plain="true" @click="confirmDelete">{{language['confirm'][type]}}</button>
 				<button class="popup-button" type="primary" plain="true" @click="cancelDelete">{{language['cancel'][type]}}</button>		
 			</view>
 
@@ -92,7 +92,7 @@
 			<view class="w-100 text-white bg-danger font-sm text-center py-1 border-bottom" @click="$refs.popupDelete.open()">{{language['delete'][type]}}</view>
 			<view class="w-100 text-white bg-secondary font-sm text-center py-1 border-bottom">{{language['cancel'][type]}}</view>
 		</view>
-		
+		<loading-plus v-if="!dataReady"></loading-plus>
 	</view>
 </template>
 
@@ -101,8 +101,12 @@
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue';
 	import uniPopup from "@/components/uni-popup/uni-popup.vue";
 	import searchBar from "@/components/a7laya/search-bar.vue"
+	import loadingPlus from '@/components/a7laya/mixins/loading-plus.vue';
+	// 这个common.js是加载用户登录验证及语言包的mixin混入
+	import common from "@/components/a7laya/mixins/common.js";
 	export default {
-		components: {searchBar, uniList, uniListItem, uniPopup},
+		mixins:[common],
+		components: {searchBar, uniList, uniListItem, uniPopup,loadingPlus},
 		data() {
 			return {
 				title: '',              // 页面标题
@@ -113,17 +117,17 @@
 				page: 1,				// 当前第几页
 				limit: 15,				// 每页条数
 				totalPages: 1,			// 总页数
-				selectid: 0,			// 长按时选择数据表ID
 				meterIndex: 0,			// 页面显示水表序号，用于编辑或删除页面节点
 				selectedId: false,      // 选中的水表id           
 				addId: "",				// 增加水表弹出框的meterID
 				addLocation: "",		// 增加水表弹出框的位置
 				editId: "",				// 编辑水表弹出框的meterID
 				editLocation: "",		// 编辑水表弹出框的位置
-				x: 0,
-				y: 0,
-				scrollTop: 0,
-				showOperator: false,
+				x: 0,					// 长按的x
+				y: 0,					// 长按的y
+				scrollTop: 0,			// 页面滚动的距离
+				showOperator: false,	// 是否显示操作弹窗
+				dataReady: false,
 			};
 		},
 		computed:{
@@ -135,9 +139,7 @@
 			},
 		},
 		onShow() {
-			console.log('123');
-			this.language = uni.getStorageSync('language')
-			this.type = uni.getStorageSync('type')
+			console.log('进入水表列表页面')
 			let title = {dc: '1_1', dtu: '1_2', cs: '1_3'}[this.meterType]
 			this.title = this.language[title][this.type]
 			this.showOperator = false
@@ -150,13 +152,12 @@
 		onLoad(e) {
 			this.meterType = e.meterType
 			var me = this
-			uni.showLoading({title: "请稍后..."})
 			this.$H.post(`${me.meterType}s/tableData?keywords=&page=1&limit=${me.limit}`)
 				.then(res => {
 					if (res.code === 1) return uni.navigateTo({url: '/pages/login/login'})
-					me.meterList = res.data
+					me.meterList = res.data.data
 					me.totalPages = parseInt(res.count/me.limit) + 1
-					uni.hideLoading();
+					me.dataReady = true
 				})
 		},
 		
@@ -226,9 +227,9 @@
 			
 			confirmDelete(e) {
 				var me = this
-				var meterId = e.currentTarget.dataset.meterid
-				this.$H.post('/'+ this.meterType +'s/delete?id=' + meterId)
+				this.$H.post('/'+ this.meterType +'s/delete?id=' + this.selectedId)
 					.then(res => {
+						console.log("res:",res)
 						if (res.code === 1) return uni.navigateTo({url: '/pages/login/login'})
 						me.meterList.splice(me.meterIndex, 1)
 						uni.hideLoading()
@@ -241,12 +242,9 @@
 			},
 			
 			
-			showMeter(e) {
-				var meterId = e.currentTarget.dataset.meterid;
-				// 页面跳转接口api
-				// debugger;
+			showMeter(id) {
 				uni.navigateTo({
-					url: "../"+this.meterType+"Single/"+this.meterType+"Single?meterId=" + meterId
+					url: "../"+this.meterType+"Single/"+this.meterType+"Single?meterId=" + id
 				})
 			},
 			

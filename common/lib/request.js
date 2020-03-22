@@ -51,7 +51,7 @@ export default {
 						return rej()
 					}
 					// 请求成功
-					let data = result.data.data
+					let data = result.data
 					res(data)
 				},
 				fail: (error) => {

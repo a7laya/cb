@@ -3,12 +3,11 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				// "app-plus" : {
-				//     "titleNView" : false //禁用原生导航栏
-				// },
-				"navigationBarTitleText": "智慧水务",
-				"navigationBarBackgroundColor":"#0288D1",
-				"navigationBarTextStyle":"white"
+				"app-plus":{
+					"titleNView":false,
+					"bounce":"none",
+					"scrollIndicator":"none"
+				}
 			}
 		},
 		{
@@ -40,7 +39,13 @@
         }
         ,{
             "path" : "pages/dcSingle/dcSingle",
-            "style" : {"navigationBarTitleText": "电池型流量计实时显示"}
+			"style": {
+				"app-plus":{
+					"titleNView":false,
+					"bounce":"none",
+					"scrollIndicator":"none"
+				}
+			}
         }
         ,{
             "path" : "pages/dtu/dtu",
@@ -52,11 +57,23 @@
         }
         ,{
             "path" : "pages/dtuSingle/dtuSingle",
-            "style" : {"navigationBarTitleText": "电磁型流量计实时显示"}
+			"style": {
+				"app-plus":{
+					"titleNView":false,
+					"bounce":"none",
+					"scrollIndicator":"none"
+				}
+			}
         }
         ,{
             "path" : "pages/csSingle/csSingle",
-            "style" : {"navigationBarTitleText": "超声波流量计型实时显示"}
+			"style": {
+				"app-plus":{
+					"titleNView":false,
+					"bounce":"none",
+					"scrollIndicator":"none"
+				}
+			}
         }
         ,{
             "path" : "pages/trash/trash",
@@ -64,7 +81,14 @@
         }
         ,{
             "path" : "pages/dcMonth/dcMonth",
-            "style" : {"navigationBarTitleText": "电池型流量计月份查询"}
+			"style": {
+				"app-plus":{
+					"titleNView":false,
+					"bounce":"none",
+					"scrollIndicator":"none"
+				}
+			}
+            // "style" : {"navigationBarTitleText": "电池型流量计月份查询"}
         }
         ,{
             "path" : "pages/dtuMonth/dtuMonth",

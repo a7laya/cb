@@ -111,8 +111,8 @@
 							uni.setStorageSync("userInfo", userInfo);
 							
 							// 获取语言列表
-							this.$H.get('/Lan/tableData').then(data=>{
-								uni.setStorageSync("language", data);
+							this.$H.get('/Lan/tableData').then(v=>{
+								uni.setStorageSync("language", v.data);
 							})
 							
 							// 切换页面跳转，使用tab切换的api
