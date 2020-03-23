@@ -34,10 +34,6 @@
 			}
         }
         ,{
-            "path" : "pages/dc/dc",
-            "style" : {"navigationBarTitleText": "电池型实时列表"}
-        }
-        ,{
             "path" : "pages/dcSingle/dcSingle",
 			"style": {
 				"app-plus":{
@@ -46,14 +42,6 @@
 					"scrollIndicator":"none"
 				}
 			}
-        }
-        ,{
-            "path" : "pages/dtu/dtu",
-            "style" : {"navigationBarTitleText": "电磁型实时列表"}
-        }
-        ,{
-            "path" : "pages/cs/cs",
-            "style" : {"navigationBarTitleText": "超声波流量计实时列表"}
         }
         ,{
             "path" : "pages/dtuSingle/dtuSingle",
@@ -80,27 +68,12 @@
             "style" : {"navigationBarTitleText": "回收站"}
         }
         ,{
-            "path" : "pages/dcMonth/dcMonth",
-			"style": {
+            "path" : "pages/range/range",
+            "style" : {
 				"app-plus":{
-					"titleNView":false,
-					"bounce":"none",
-					"scrollIndicator":"none"
+					"titleNView": false
 				}
 			}
-            // "style" : {"navigationBarTitleText": "电池型流量计月份查询"}
-        }
-        ,{
-            "path" : "pages/dtuMonth/dtuMonth",
-            "style" : {"navigationBarTitleText": "电磁型流量计月份查询"}
-        }
-        ,{
-            "path" : "pages/csMonth/csMonth",
-            "style" : {"navigationBarTitleText": "超声波流量计月份查询"}
-        }
-        ,{
-            "path" : "pages/dcRange/dcRange",
-            "style" : {"navigationBarTitleText": "电池型流量计区间查询"}
         }
         ,{
             "path" : "pages/dtuRange/dtuRange",
@@ -117,6 +90,14 @@
         ,{
             "path" : "pages/timerSet/timerSet",
             "style" : {"navigationBarTitleText": "定时设置"}
+        }
+        ,{
+            "path" : "pages/month/month",
+            "style" : {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
         }
     ],
 	"globalStyle": {

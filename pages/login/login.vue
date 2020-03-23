@@ -114,6 +114,7 @@
 							this.$H.get('/Lan/tableData').then(v=>{
 								uni.setStorageSync("language", v.data);
 							})
+							uni.setStorageSync('type',this.type)
 							
 							// 切换页面跳转，使用tab切换的api
 							uni.navigateTo({

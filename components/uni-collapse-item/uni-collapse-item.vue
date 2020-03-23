@@ -139,7 +139,8 @@
 	}
 
 	.uni-collapse-cell--open {
-		background-color: #f5f5f5
+		background-color: #a6d2d6;
+		color: #FFFFFF
 	}
 
 	.uni-collapse-cell--disabled {
@@ -208,6 +209,7 @@
 
 	.uni-collapse-cell__title-text {
 		font-size: 32upx;
+		color: #0b656d!important;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		color: inherit;

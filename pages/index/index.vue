@@ -26,24 +26,24 @@
 
 		<uni-grid :column="3" :show-border="false">
 			<uni-grid-item class="animated fadeInUp faster">
-				<text class="test" style="font-size: 80upx;" @click="dcMonth">&#xe68a;</text>
-				<text class="text" @click="dcMonth">{{language['2_1'][type]}}</text>
+				<text class="test" style="font-size: 80upx;" @click="openMonth('dc')">&#xe68a;</text>
+				<text class="text" @click="openMonth('dc')">{{language['2_1'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInUp faster">
-				<text class="test" style="font-size: 80upx;" @click="dcRange">&#xe6b4;</text>
-				<text class="text" @click="dcRange">{{language['2_2'][type]}}</text>
+				<text class="test" style="font-size: 80upx;" @click="openRange('dc')">&#xe6b4;</text>
+				<text class="text" @click="openRange('dc')">{{language['2_2'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInUp faster">
-				<text class="test" style="font-size: 80upx;" @click="dtuMonth">&#xe68a;</text>
-				<text class="text" @click="dtuMonth">{{language['2_3'][type]}}</text>
+				<text class="test" style="font-size: 80upx;" @click="openMonth('dtu')">&#xe68a;</text>
+				<text class="text" @click="openMonth('dtu')">{{language['2_3'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInDown faster">
 				<text class="test" style="font-size: 80upx;" @click="dtuRange">&#xe6b4;</text>
 				<text class="text" @click="dtuRange">{{language['2_4'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInDown faster">
-				<text class="test" style="font-size: 80upx;" @click="csMonth">&#xe68a;</text>
-				<text class="text" @click="csMonth">{{language['2_5'][type]}}</text>
+				<text class="test" style="font-size: 80upx;" @click="openMonth('cs')">&#xe68a;</text>
+				<text class="text" @click="openMonth('cs')">{{language['2_5'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInDown faster">
 				<text class="test" style="font-size: 80upx;" @click="csRange">&#xe6b4;</text>
@@ -100,6 +100,16 @@ export default {
 				url: '../meter/meter?meterType=' + meterType
 			});
 		},
+		openMonth(meterType) {
+			uni.navigateTo({
+				url: '../month/month?meterType=' + meterType
+			});
+		},
+		openRange(meterType) {
+			uni.navigateTo({
+				url: '../range/range?meterType=' + meterType
+			});
+		},
 
 		trash() {
 			uni.navigateTo({
@@ -113,11 +123,7 @@ export default {
 			});
 		},
 
-		dcMonth() {
-			uni.navigateTo({
-				url: '../dcMonth/dcMonth'
-			});
-		},
+		
 
 		dcRange() {
 			uni.navigateTo({
@@ -125,11 +131,7 @@ export default {
 			});
 		},
 
-		dtuMonth() {
-			uni.navigateTo({
-				url: '../dtuMonth/dtuMonth'
-			});
-		},
+		
 
 		dtuRange() {
 			uni.navigateTo({
@@ -137,11 +139,7 @@ export default {
 			});
 		},
 
-		csMonth() {
-			uni.navigateTo({
-				url: '../csMonth/csMonth'
-			});
-		},
+		
 
 		csRange() {
 			uni.navigateTo({

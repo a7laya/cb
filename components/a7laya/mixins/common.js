@@ -2,7 +2,6 @@
 let vm={}
 export default {
 	data(){
-		
 		vm = this
 		return{
 			userInfo: null, // 用户的信息，包括id token
