@@ -43,15 +43,12 @@
 	font-size: 19px;
 	background-color: #FFFFFF;
 	height: 50upx;
-	width: 650upx;
+	width: 550upx;
 }
 
 /* 搜索框 end */
 
-/* 电池型标题 start */
-.trash-name {
-	margin-top: 70upx;
-}
+
 /* 电池型标题 end */
 
 /* 删除弹出框 start */
@@ -71,7 +68,7 @@
 
 /* 增加删除弹出框 start */
 
-.add-restore {
+.add-edit {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -79,7 +76,7 @@
 	height: 250upx;
 }
 
-.add-restore-row {
+.add-edit-row {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;

@@ -20,7 +20,9 @@
         ,{
             "path" : "pages/setting/setting",
 			"style" : {
-            	"navigationBarTitleText": "设置"
+            	"app-plus":{
+					"titleNView":false
+				}
             }
         }
         ,{
@@ -65,7 +67,11 @@
         }
         ,{
             "path" : "pages/trash/trash",
-            "style" : {"navigationBarTitleText": "回收站"}
+            "style" : {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
         }
         ,{
             "path" : "pages/range/range",
@@ -76,20 +82,20 @@
 			}
         }
         ,{
-            "path" : "pages/dtuRange/dtuRange",
-            "style" : {"navigationBarTitleText": "电磁型型流量计区间查询"}
-        }
-        ,{
-            "path" : "pages/csRange/csRange",
-            "style" : {"navigationBarTitleText": "超声波流量计区间查询"}
-        }
-        ,{
             "path" : "pages/changePassword/changePassword",
-            "style" : {"navigationBarTitleText": "更改密码"}
+            "style" : {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
         }
         ,{
             "path" : "pages/timerSet/timerSet",
-            "style" : {"navigationBarTitleText": "定时设置"}
+            "style" : {
+				"app-plus":{
+					"titleNView":false
+				}
+			}
         }
         ,{
             "path" : "pages/month/month",

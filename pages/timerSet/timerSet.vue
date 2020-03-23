@@ -1,31 +1,38 @@
 <template>
-	<view class="body">
+	<view>
+		<!-- 搜索栏 -->
+		<search-bar :showSearchBar='false' :title="language['3_1'][type]" @add="add" @search="searchMe" :language="language" :languageType="type"></search-bar>
+		
 		<form @submit="formSubmit">
 			<view class="face-wapper">
 				<!-- <image src="../../static/icons/default-face.png" class="face"></image> -->
 			</view>
 			
 			<view class="info-wapper">
-				<label class="words-lbl">电磁型流量计</label>
-				<input name="dtuTimer" type="text" v-model="dtu" class="input" placeholder="请输入定时器间隔(s)" placeholder-class="graywords"/>
+				<label class="words-lbl">{{language['1_2'][type]}}</label>
+				<input style="width: 400rpx;" name="dtuTimer" type="text" v-model="dtu" class="input"  placeholder-class="graywords"/>
 			</view>
 			
 			<view class="info-wapper" style="margin-top: 40upx;">
-				<label class="words-lbl">超声波流量计</label>
-				<input name="csTimer" type="text" v-model="cs"  class="input" placeholder="请输入定时器间隔(s)" placeholder-class="graywords"/>
+				<label class="words-lbl">{{language['1_3'][type]}}</label>
+				<input style="width: 400rpx;" name="csTimer" type="text" v-model="cs" password="true" class="input"  placeholder-class="graywords"/>
 			</view>
 			
-			<button type="primary" form-type="submit" style="margin-top: 60upx;width: 90%;">确认</button>
-			<button type="default"  style="margin-top: 60upx;width: 90%;" @click="formReset">重置</button>
+			<button type="primary" form-type="submit" class="main-bg-hover-color" style="margin-top: 60upx;width: 90%;">{{language['confirm'][type]}}</button>
+			<button type="default" formType="reset" style="margin-top: 60upx;width: 90%;">{{language['reset'][type]}}</button>
 		</form>
 		
 
 	</view>
 </template>
 
-
 <script>
+	import searchBar from "@/components/a7laya/search-bar.vue"
+	// 这个common.js是加载用户登录验证及语言包的mixin混入
+	import common from "@/components/a7laya/mixins/common.js";
 	export default {
+		mixins:[common],
+		components:{searchBar},
 		data() {
 			return {
 				timerList: [],  //定时器列表

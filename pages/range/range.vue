@@ -5,19 +5,55 @@
 		<view class="w-100" style="height: 260rpx; background-color: #00c6dc;;"></view>
 		
 		
-		<view class="vdc-name">123
+		<view class="vdc-name" v-if="meterType === 'dc'">
 			<view class="" v-for="(vdc,index) in vdcList" :key="index">
 				<view class="" v-if="vdc.istheMonthFirstItem">
 					{{vdc.year}}.{{vdc.month}}
 				</view>
 				<uni-collapse @change="change" >
-					<uni-collapse-item ref="add" :title="`${vdc.location}` + `  [${vdc.NAME}]`" :show-animation="true"  thumb="../../static/icons/guess-u-like.png" >
+					<uni-collapse-item ref="add" :title="`${vdc.location}` + `  [${vdc.NAME}]`" :show-animation="true"  thumb="../../static/icons/meter.png" >
+						<view class="data-block">
+							<view class="title">
+								<text class="title-text">{{'水表' | $lan('meter')}}ID</text>				
+							</view>
+							<view class="value">
+								<text class="value-text">{{vdc.NAME}}</text>				
+							</view>
+						</view>	
+						<view class="data-block">
+							<view class="title">
+								<text class="title-text">{{'正向累积' | $lan('ftotal')}}</text>				
+							</view>
+							<view class="value">
+								<text class="value-text">{{vdc.FTOTAL}}</text>				
+							</view>
+						</view>	
+						<view class="data-block">
+							<view class="title">
+								<text class="title-text">{{'反向累积' | $lan('rtotal')}}</text>				
+							</view>
+							<view class="value">
+								<text class="value-text">{{vdc.RTOTAL}}</text>				
+							</view>
+						</view>	
+					</uni-collapse-item>
+				</uni-collapse>	
+			</view>
+		</view>
+		
+		<view class="vdc-name" v-else>
+			<view class="" v-for="(vdc,index) in vdcList" :key="index">
+				<view class="" v-if="vdc.istheMonthFirstItem">
+					{{vdc.year}}.{{vdc.month}}
+				</view>
+				<uni-collapse @change="change" >
+					<uni-collapse-item ref="add" :title="`${vdc.location}` + `  [${vdc.meter_id}]`" :show-animation="true"  thumb="../../static/icons/meter.png" >
 						<view class="data-block">
 							<view class="title">
 								<text class="title-text">水表ID</text>				
 							</view>
 							<view class="value">
-								<text class="value-text">{{vdc.NAME}}</text>				
+								<text class="value-text">{{vdc.meter_id}}</text>				
 							</view>
 						</view>	
 						<view class="data-block">
@@ -40,6 +76,7 @@
 				</uni-collapse>	
 			</view>
 		</view>
+		
 		
 
 		
@@ -88,14 +125,6 @@
 				waitInfo: '',
 			};
 		},
-		computed: {
-			startDate() {
-				return this.getDate('start');
-			},
-			endDate() {
-				return this.getDate('end');
-			}
-		},
 		onShow() {
 			console.log('进入按区间查询');
 			let title = { dc: '2_2', dtu: '2_4', cs: '2_6' }[this.meterType];
@@ -105,8 +134,8 @@
 		onLoad(e) {
 			this.meterType = e.meterType;
 			this.vdcList = [];
-			this.form.dateStart = this.startDate
-			this.form.dateEnd   = this.endDate
+			this.form.dateEnd = this.getDate1('end');
+			this.form.dateStart = this.getDate1('start');
 			this.pagedvdcList(this.form, 1, this.limit)
 			console.log("this.vdcList:",this.vdcList)
 		},
@@ -117,9 +146,6 @@
 			this.pagedvdcList(this.form, this.page+1, this.limit);
 		},
 		methods: {
-			change() {
-				
-			},
 			pagedvdcList(form, page, pageSize) {
 				var me = this;
 				var start = form.dateStart || '';
@@ -129,9 +155,11 @@
 					mask: true,
 					title: me.waitInfo
 				});
-				this.$H.post('/'+ me.meterType +'cx/tableDataDC?keywords='+ keywords +'&date1=' + start  +'&date2=' + end   +'&page=' + page + '&limit=' + pageSize).then(res => {
-					if (0 == res.data.code) {
+				let temp = {dc:'DC',dtu:'',cs:''}
+				this.$H.post('/'+ me.meterType +'cx/tableData'+temp[me.meterType]+'?keywords='+ keywords +'&date1=' + start  +'&date2=' + end   +'&page=' + page + '&limit=' + pageSize).then(res => {
 						console.log("res:",res)
+					if(res.msg === "Login error") return uni.navigateTo({url: "/pages/login/login"})
+					if (0 == res.data.code) {
 						var vdcList = res.data.data;
 						me.totalPages = res.data.count%me.limit === 0 ? res.data.count / me.limit : parseInt(res.data.count / me.limit) + 1
 						me.vdcList = me.vdcList.concat(vdcList);
@@ -140,31 +168,28 @@
 					uni.hideLoading();
 				});
 			},
-			
 			searchMe(form) {
+				console.log('form:',form)
 				this.vdcList = [];
 				this.pagedvdcList(form, 1, this.limit);
 			},
 			change(e){
-				console.log("打开折叠",e)
+				// console.log("打开折叠",e)
 			},
-			getDate(type) {
+			getDate1(type) {
 				const date = new Date();
 				let year = date.getFullYear();
 				let month = date.getMonth() + 1;
 				let day = date.getDate();
 				
 				if (type === 'start') {
-					year = year - 6;
+					year = year - 1;
 				} else if (type === 'end') {
-					year = year + 1;
+					year = year;
 				}
-				month = month > 9 ? month : '0' + month;;
-				day = day > 9 ? day : '0' + day;
+				// month = month > 9 ? month : '0' + month;;
+				// day = day > 9 ? day : '0' + day;
 				return `${year}-${month}-${day}`;
-			},
-			showDate(){
-				this.form.showDate = true
 			}
 		}
 	}

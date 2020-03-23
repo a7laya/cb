@@ -1,22 +1,25 @@
 <template>
-	<view class="body">
+	<view>
+		<!-- 搜索栏 -->
+		<search-bar :showSearchBar='false' :title="language['3_1'][type]" @add="add" @search="searchMe" :language="language" :languageType="type"></search-bar>
+		
 		<form @submit="formSubmit">
 			<view class="face-wapper">
 				<!-- <image src="../../static/icons/default-face.png" class="face"></image> -->
 			</view>
 			
 			<view class="info-wapper">
-				<label class="words-lbl">旧密码</label>
-				<input name="old_password" type="text" value="" class="input" placeholder="请输入旧密码" placeholder-class="graywords"/>
+				<label class="words-lbl">{{language['old_password'][type]}}</label>
+				<input style="width: 400rpx;height:100%" name="old_password" type="password" value="" class="input"  placeholder-class="graywords"/>
 			</view>
 			
 			<view class="info-wapper" style="margin-top: 40upx;">
-				<label class="words-lbl">新密码</label>
-				<input name="password" type="text" value="" password="true" class="input" placeholder="请输入新密码" placeholder-class="graywords"/>
+				<label class="words-lbl">{{language['new_password'][type]}}</label>
+				<input style="width: 400rpx;height:100%" name="password" type="password" value="" password="true" class="input"  placeholder-class="graywords"/>
 			</view>
 			
-			<button type="primary" form-type="submit" style="margin-top: 60upx;width: 90%;">确认</button>
-			<button type="default" formType="reset" style="margin-top: 60upx;width: 90%;">重置</button>
+			<button type="primary" form-type="submit" class="main-bg-hover-color" style="margin-top: 60upx;width: 90%;">{{language['confirm'][type]}}</button>
+			<button type="default" formType="reset" style="margin-top: 60upx;width: 90%;">{{language['reset'][type]}}</button>
 		</form>
 		
 
@@ -25,7 +28,12 @@
 
 
 <script>
+	import searchBar from "@/components/a7laya/search-bar.vue"
+	// 这个common.js是加载用户登录验证及语言包的mixin混入
+	import common from "@/components/a7laya/mixins/common.js";
 	export default {
+		mixins:[common],
+		components:{searchBar},
 		data() {
 			return {
 				
@@ -58,7 +66,7 @@
 					method: "POST",
 					success: (res) => {
 						// console.log(res);
-						debugger;
+						// debugger;
 						// 获取真实数据之前，务必判断状态是否为200
 						if (res.data.code == 0) {
 							// var userInfo = res.data.data;

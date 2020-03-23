@@ -38,16 +38,16 @@
 				<text class="text" @click="openMonth('dtu')">{{language['2_3'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInDown faster">
-				<text class="test" style="font-size: 80upx;" @click="dtuRange">&#xe6b4;</text>
-				<text class="text" @click="dtuRange">{{language['2_4'][type]}}</text>
+				<text class="test" style="font-size: 80upx;" @click="openRange('dtu')">&#xe6b4;</text>
+				<text class="text" @click="openRange('dtu')">{{language['2_4'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInDown faster">
 				<text class="test" style="font-size: 80upx;" @click="openMonth('cs')">&#xe68a;</text>
 				<text class="text" @click="openMonth('cs')">{{language['2_5'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInDown faster">
-				<text class="test" style="font-size: 80upx;" @click="csRange">&#xe6b4;</text>
-				<text class="text" @click="csRange">{{language['2_6'][type]}}</text>
+				<text class="test" style="font-size: 80upx;" @click="openRange('cs')">&#xe6b4;</text>
+				<text class="text" @click="openRange('cs')">{{language['2_6'][type]}}</text>
 			</uni-grid-item>
 		</uni-grid>
 

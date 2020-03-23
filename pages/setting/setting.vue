@@ -1,9 +1,13 @@
 <template>
-	<view class="page page-fill">
-		<view class="header">
-			
-			<view class="info-wapper" v-if="userIsLogin">
-				<view class="nickname">
+	<view>
+		<search-bar :showSearchBar='false' :title="language['3'][type]"  @search="searchMe" :language="language" :languageType="type"></search-bar>
+		<view>
+			<view class="w-100" style="height: 80rpx; background-color: #00c6dc;"></view>
+			<view class="w-100 d-flex a-center j-center flex-column main-bg-hover-color" 
+			style="height: 300rpx;"
+			v-if="userIsLogin">
+				<image src="/static/icons/default-face.png" style="height: 140rpx;width: 140rpx;"></image>
+				<view class="font-lg main-text-color">
 					{{userInfo.username}}
 				</view>
 			</view>
@@ -20,7 +24,7 @@
 		<view class="page-block info-list">
 			<!-- 更改密码 start -->
 			<view class="item-wapper " @click="changePassword">
-				<view class="info-words">更改密码</view>
+				<view class="info-words">{{language['change_password'][type]}}</view>
 				
 				<view class="right-wapper">
 					<view class="arrow-block">
@@ -36,7 +40,7 @@
 			
 			<!-- 定时设置  start-->
 			<view class="item-wapper" @click="timerSet">
-				<view class="info-words">定时设置</view>
+				<view class="info-words">{{language['3_5'][type]}}</view>
 				
 				<view class="right-wapper">
 					<view class="arrow-block">
@@ -54,8 +58,8 @@
 		</view>
 		
 		<view class="footer-wapper">
-			<view class="footer-words" style="margin-top: 10upx;" @click="logout">
-				退出登录
+			<view class="footer-words bg-danger text-white" style="margin-top: 10upx;" @click="logout">
+				{{language['page_logout'][type]}}
 			</view>
 		</view>
 		
@@ -63,7 +67,12 @@
 </template>
 
 <script>
+	import searchBar from "@/components/a7laya/search-bar.vue"
+	// 这个common.js是加载用户登录验证及语言包的mixin混入
+	import common from "@/components/a7laya/mixins/common.js";
 	export default {
+		mixins:[common],
+		components:{searchBar},
 		data() {
 			return {
 				userIsLogin: false,
@@ -164,4 +173,8 @@
 
 <style>
 	@import url("setting.css");
+	.info-words{
+		width: 80%;
+		color: #085F73;
+	}
 </style>

@@ -1,30 +1,20 @@
 <template>
-	<view class="page page-block">
+	<view @click="showOperator = false">
+		<!-- 搜索栏 -->
+		<search-bar :showLeftIcon='false' :title="language['1_4'][type]" @add="add" @search="searchMe" :language="language" :languageType="type"></search-bar>
 		
-		<view class="search-block">
-			<input 
-				placeholder="搜索ID|位置" 
-				maxlength="10" 
-				class="search-text" 
-				confirm-type="search"
-				v-model="keywords"
-				@confirm="searchMe"
-			/>
-			
-			<view class="search-ico-wapper">
-				<image src="../../static/icons/search.png" class="search-ico" @click="searchMe"></image>
-			</view>
-			
-		</view>
 		
-		<view class="trash-name">
+		<view class="dc-name">
+			<!-- 搜索组件带title是180rpx的高度 不带是100rpx的高度 -->
+			<view class="w-100" style="height: 180rpx; background-color: #00c6dc;"></view>
 			<uni-list>
 				<view class="" v-for="(trash,index) in trashList" :key="index">
-					<view class="" :data-trashid="trash.id" :data-trashindex="index" @longtap="operator" >
-						<uni-list-item :title="`${trash.location}` + `  [${trash.meter_id}]`"  
-								show-extra-icon="true" 
-								:extra-icon="{color: '#4cd964',size: '22',type: 'spinner'}"
-								show-arrow="false">
+					<view class="" :data-trashid="trash.id" :data-trashindex="index"  @longtap="operator($event,trash,index)">
+						<uni-list-item>
+						<view class="d-flex a-center">
+							<text class="test mr-2 text-muted" style="font-size: 50upx;">&#xe7e9;</text>
+							{{trash.location}} [{{trash.meter_id}}]
+						</view>
 						</uni-list-item>
 					</view>
 				</view>
@@ -32,50 +22,40 @@
 			</uni-list>
 		</view>
 		
-		<!-- 编辑弹出窗 start -->
+		<!-- 还原弹出窗 start -->
 		<uni-popup ref="popuprestore" type="center">
-			确定要还原吗？
-		    <view class="add-restore">		
-				<view class="add-restore-row">
-					<view class="row-title-left">
-						<text class="row-title-text">水表ID:</text>
-					</view>
-					<view class="row-title-right">
-						<!-- <text class="row-title-input" v-model="restoreId"/> -->
-						<text class="row-title-input">{{restoreId}}</text>
-					</view>
-				</view>	
-				
-				<view class="add-restore-row">
-					<view class="row-title-left">
-						<text class="row-title-text">位置:</text>
-					</view>
-					<view class="row-title-right">
-						<!-- <input class="row-title-input" v-model="restoreTableName"/> -->
-						<text class="row-title-input">{{restoreLocation}}</text>
-					</view>
-				</view>		    	
-		    </view>
-			
+			<view class="w-100 text-danger font-md text-center">"{{language['meter'][type]}} : {{trashId}}"</view>
+		    {{{cn:'确定还原所选项目吗?',en:'Are you sure you want to restore the selected items?',other:'選択したアイテムを復元しますか？'}[type]}}
 			<view class="button-block">
-				<button class="popup-button-add" type="warn" plain="true" :data-trashid="selectid" @click="confirmRestore">确定</button>
-				<button class="popup-button-add" type="primary" plain="true" @click="cancelRestore">取消</button>		
+				<button class="popup-button" type="warn" plain="true" @click="confirmRestore">{{language['confirm'][type]}}</button>
+				<button class="popup-button" type="primary" plain="true" @click="cancelRestore">{{language['cancel'][type]}}</button>		
 			</view>
-		</uni-popup>
-		<!-- 编辑弹出窗 end -->
 		
+		</uni-popup>
+		<!-- 还原弹出窗 end -->
 		<!-- 删除弹出窗 start -->
 		<uni-popup ref="popupDelete" type="center">
-		    确定要删除吗
+			<view class="w-100 text-danger font-md text-center">"{{language['meter'][type]}} : {{trashId}}"</view>
+		    {{language['delete_confirm'][type]}}
 			<view class="button-block">
-				<button class="popup-button" type="warn" plain="true" :data-trashid="selectid" @click="confirmDelete">确定</button>
-				<button class="popup-button" type="primary" plain="true" @click="cancelDelete">取消</button>		
+				<button class="popup-button" type="warn" plain="true" @click="confirmDelete">{{language['confirm'][type]}}</button>
+				<button class="popup-button" type="primary" plain="true" @click="cancelDelete">{{language['cancel'][type]}}</button>		
 			</view>
-
+		
 		</uni-popup>
 		<!-- 删除弹出窗 end -->
 		
 		
+		<!-- 操作弹窗 -->
+		<view class="main-bg-color position-absolute animated pulse faster" 
+		style="z-index: 20202020;"
+		:style="'width: 120rpx;left:' + operatorX + 'px;top:' + operatorY + 'px;'"
+		v-if="showOperator">
+			<view class="w-100 text-white bg-primary font-sm text-center py-1 border-bottom" @click="$refs.popuprestore.open()">{{language['restore'][type]}}</view>
+			<view class="w-100 text-white bg-danger font-sm text-center py-1 border-bottom" @click="$refs.popupDelete.open()">{{language['delete'][type]}}</view>
+			<view class="w-100 text-white bg-secondary font-sm text-center py-1 border-bottom">{{language['cancel'][type]}}</view>
+		</view>
+		<loading-plus v-if="!dataReady"></loading-plus>
 	</view>
 </template>
 
@@ -84,52 +64,59 @@
 	import uniListItem from '@/components/uni-list-item/uni-list-item.vue';
 	import uniPopup from "@/components/uni-popup/uni-popup.vue";
 	import uniIcon from "@/components/uni-icon/uni-icon.vue";
-	
+	import searchBar from "@/components/a7laya/search-bar.vue"
+	import loadingPlus from '@/components/a7laya/mixins/loading-plus.vue';
+	// 这个common.js是加载用户登录验证及语言包的mixin混入
+	import common from "@/components/a7laya/mixins/common.js";
 	export default {
-		components: {uniList, uniListItem, uniPopup, uniIcon},
+		mixins:[common],
+		components: {searchBar, loadingPlus, uniList, uniListItem, uniPopup, uniIcon},
 		data() {
 			return {
+				language: false,		// 
 				trashList: [],
 				keywords: "",			// 搜索的关键字
 				page: 1,				// 当前第几页
 				limit: 15,				// 每页条数
 				totalPages: 1,			// 总页数
 				selectid: 0,			// 长按时选择数据表ID
+				trashId: "", // 选中的merter_id
+				trashLocation: "", // 选中的水表地址
 				trashIndex: 0,			// 页面显示水表序号，用于编辑或删除页面节点
+				trashTableName: "",		// 
 				addId: "",				// 增加水表弹出框的meterID
 				addLocation: "",		// 增加水表弹出框的位置
 				restoreId: "",			// 还原删除水表弹出框的meterID
 				restoreTableName: "",	// 还原删除水表弹出框的数据表名称
-				restoreLocation: ""
+				restoreLocation: "",
+				x: 0,					// 长按的x
+				y: 0,					// 长按的y
+				scrollTop: 0,			// 页面滚动的距离
+				showOperator: false,	// 是否显示操作弹窗
+				dataReady: false,
 			};
 		},
-		
-		onShow() {
-			// 使用挂载方法获取用户数据
-			var userInfo = this.getGlobalUser("userInfo");
-			// debugger;
-			if (userInfo != null) {
-				this.userIsLogin = true;
-				this.userInfo = userInfo;
-			} else {
-				this.userIsLogin = false;
-				this.userInfo = {};
-				// 切换页面跳转，使用tab切换的api
-				uni.navigateTo({
-					url: "../login/login"
-				});
-			}
+		computed:{
+			operatorX(){
+				return this.x > 260 ? this.x - 50 : this.x + 10
+			},
+			operatorY(){
+				return this.y + this.scrollTop - 10
+			},
 		},
-		
+		onShow() {
+			console.log('进入回收站')
+			this.showOperator = false
+		},
+		onPageScroll(e) {
+			// 监听页面滚动
+			this.scrollTop = e.scrollTop
+			this.showOperator = false
+		},
 		onLoad() {
 			var me = this;
 			var userInfo = me.getGlobalUser("userInfo");
 			
-			uni.showLoading({
-				mask: true,
-				title: "请稍后..."
-			});
-			uni.showNavigationBarLoading();
 			
 			var serverUrl = me.serverUrl;
 			// console.log(usrInfo.user_id);
@@ -161,8 +148,7 @@
 					}
 				},
 				complete: () => {
-					uni.hideNavigationBarLoading();
-					uni.hideLoading();
+					this.dataReady = true
 				}
 			});
 		},
@@ -186,90 +172,49 @@
 		},
 		
 		methods: {			
-			
 			confirmRestore() {		
 				var me = this;
-				var userInfo = me.getGlobalUser("userInfo");
-				var meter_id = me.restoreId;						//数据绑定的input meter_id值
-				var tableName = me.restoreTableName;				//数据库表名称
-				var trashIndex = me.trashIndex;
-				var id = me.selectid;
-								
 				uni.showLoading({
 					mask: true,
 					title: "请稍后..."
 				});
-				uni.showNavigationBarLoading();
-				
-				var serverUrl = me.serverUrl;
-				// 查询数据列表
-				uni.request({
-					url: serverUrl + '/trashs/restore?id=' + id + '&table_name=' + tableName,
-					header:{
-						'content-type': 'application/x-www-form-urlencoded',
-						'id':userInfo.user_id,
-						'token': userInfo.token
-					},
-					method: "POST",
-					success: (res) => {
-						// 获取真实数据之前，务必判断状态是否为0	
-						// debugger;
-						if (0 == res.data.code) {
+				this.$H.post('/trashs/restore?id=' + me.trashId + '&table_name=' + me.trashTableName)
+					.then(res=>{
+						if(0===res.code){
 							// 添加节点至首部
 							// debugger;
 							me.trashList.splice(me.trashIndex, 1);
-							me.restoreId = "";
-							me.restoreTableName = "";
-						} 
-					},
-					complete: () => {
-						uni.hideNavigationBarLoading();
+							me.trashId = "";
+							me.trashTableName = ""
+						}
+						me.$refs.popuprestore.close()
 						uni.hideLoading();
-					}
-				});					
-				this.$refs.popuprestore.close()
+					})
 			},
 			
 			cancelRestore() {
 				this.$refs.popuprestore.close()
 			},
 			
-			confirmDelete(e) {
+			confirmDelete(e) {		
 				var me = this;
-				var userInfo = me.getGlobalUser("userInfo");
-				var trashId = e.currentTarget.dataset.trashid;
-				var tableName = me.restoreTableName;				//数据绑定的数据库名称
-				var id = me.selectid;
-				// debugger;
 				uni.showLoading({
 					mask: true,
 					title: "请稍后..."
 				});
-				uni.showNavigationBarLoading();
-				
-				var serverUrl = me.serverUrl;
-				// 查询数据列表
-				// debugger;
-				uni.request({
-					url: serverUrl + '/trashs/delete?id=' + id  + '&table_name=' + tableName,
-					header:{
-						'content-type': 'application/x-www-form-urlencoded',
-						'id':userInfo.user_id,
-						'token': userInfo.token
-					},
-					method: "POST",
-					success: (res) => {
-						// 获取真实数据之前，务必判断状态是否为0	
-						if (0 == res.data.code) {
+				this.$H.post('/trashs/delete?id=' + me.trashId + '&table_name=' + me.trashTableName)
+					.then(res=>{
+						if(0===res.code){
+							// 添加节点至首部
+							// debugger;
 							me.trashList.splice(me.trashIndex, 1);
-						} 
-					},
-					complete: () => {
-						uni.hideNavigationBarLoading();
+							me.trashId = "";
+							me.trashTableName = ""
+						}
+						me.$refs.popupDelete.close()
 						uni.hideLoading();
-					}
-				});
-				this.$refs.popupDelete.close()
+					})
+				
 			},
 			
 			cancelDelete() {
@@ -280,7 +225,6 @@
 			pagedtrashList(keywords, page, pageSize) {
 				var me = this;
 				var userInfo = me.getGlobalUser("userInfo");
-
 				uni.showLoading({
 					mask: true,
 					title: "请稍后..."
@@ -300,7 +244,6 @@
 					method: "POST",
 					success: (res) => {
 						// 获取真实数据之前，务必判断状态是否为0
-
 						if (0 == res.data.code) {
 							var trashList = res.data.data.data;
 							me.trashList = me.trashList.concat(trashList);
@@ -314,41 +257,25 @@
 				});
 			},
 			
-			searchMe(e) {
-				var me = this;
-				// 获取搜索的内容
-				// debugger;
-				// var value = e.detail.value;
-				var value = me.keywords;
-				me.trashList = [];
-				
-				me.pagedtrashList(value, 1, 15);
+			searchMe(keywords) {
+				this.trashList = [];
+				this.pagedtrashList(keywords, 1, this.limit);
 			},
 			
-			operator(e) {
-				var me = this;
-				var globalUser = me.getGlobalUser("globalUser");
-				var trashId = e.currentTarget.dataset.trashid;
-				var trashIndex = e.currentTarget.dataset.trashindex;
-				me.selectid = trashId;
-				me.trashIndex = trashIndex;
-				
-				uni.showActionSheet({
-					itemList: ["还原", "删除"],
-					success(res) {
-						var index = res.tapIndex;
-						me.restoreId = me.trashList[trashIndex].meter_id;
-						me.restoreTableName = me.trashList[trashIndex].table_name;
-						me.restoreLocation = me.trashList[trashIndex].location;
-						
-						if (index == 0) {							
-							me.$refs.popuprestore.open();
-						} else if (index == 1) {
-							me.$refs.popupDelete.open();							
-						}
-					}
-				})
-			},
+			operator($event,trash,index) {
+				console.log('trash:',trash)
+				this.showOperator = false
+				// 获取点击的坐标
+				let position = $event.touches[0] 
+				this.x = position.clientX
+				this.y = position.clientY
+				this.selectid = trash.id;
+				this.trashId = trash.meter_id;
+				this.trashLocation = trash.location;
+				this.trashIndex = index
+				this.trashTableName = this.trashList[index].table_name;
+				setTimeout(()=>{this.showOperator = true},100)
+			}
 			
 
 		}
@@ -356,5 +283,13 @@
 </script>
 
 <style>
-	@import url("trash.css"); 
+	@import url("trash.css");  
+	button {
+		height: 60rpx;
+		min-width: 150rpx;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 24rpx;
+	}
 </style>
