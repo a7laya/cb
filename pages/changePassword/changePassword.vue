@@ -4,11 +4,9 @@
 		<search-bar :showSearchBar='false' :title="language['3_1'][type]" @add="add" @search="searchMe" :language="language" :languageType="type"></search-bar>
 		
 		<form @submit="formSubmit">
-			<view class="face-wapper">
-				<!-- <image src="../../static/icons/default-face.png" class="face"></image> -->
-			</view>
 			
-			<view class="info-wapper">
+			
+			<view class="info-wapper" style="margin-top: 200rpx;">
 				<label class="words-lbl">{{language['old_password'][type]}}</label>
 				<input style="width: 400rpx;height:100%" name="old_password" type="password" value="" class="input"  placeholder-class="graywords"/>
 			</view>
@@ -17,8 +15,9 @@
 				<label class="words-lbl">{{language['new_password'][type]}}</label>
 				<input style="width: 400rpx;height:100%" name="password" type="password" value="" password="true" class="input"  placeholder-class="graywords"/>
 			</view>
-			
-			<button type="primary" form-type="submit" class="main-bg-hover-color" style="margin-top: 60upx;width: 90%;">{{language['confirm'][type]}}</button>
+			<button  form-type="submit" style="margin-top: 460upx;width: 90%;"
+			class="main-bg-hover-color text-white animated fadeInUp fast" 
+			hover-class="bg-primary">{{language['confirm'][type]}}</button>
 			<button type="default" formType="reset" style="margin-top: 60upx;width: 90%;">{{language['reset'][type]}}</button>
 		</form>
 		

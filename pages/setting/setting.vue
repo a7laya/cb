@@ -2,11 +2,12 @@
 	<view>
 		<search-bar :showSearchBar='false' :title="language['3'][type]"  @search="searchMe" :language="language" :languageType="type"></search-bar>
 		<view>
-			<view class="w-100" style="height: 80rpx; background-color: #00c6dc;"></view>
+			<view class="w-100" style="height: 80rpx; background-color: #068adc;"></view>
 			<view class="w-100 d-flex a-center j-center flex-column main-bg-hover-color" 
 			style="height: 300rpx;"
 			v-if="userIsLogin">
-				<image src="/static/icons/default-face.png" style="height: 140rpx;width: 140rpx;"></image>
+				<image src="/static/icons/default-face.png" style="height: 140rpx;width: 140rpx;"
+				class="face animated flipInX"></image>
 				<view class="font-lg main-text-color">
 					{{userInfo.username}}
 				</view>

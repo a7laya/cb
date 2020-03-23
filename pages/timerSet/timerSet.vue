@@ -9,12 +9,12 @@
 			</view>
 			
 			<view class="info-wapper">
-				<label class="words-lbl">{{language['1_2'][type]}}</label>
+				<label class="words-lbl ml-2">{{language['1_2'][type]}}</label>
 				<input style="width: 400rpx;" name="dtuTimer" type="text" v-model="dtu" class="input"  placeholder-class="graywords"/>
 			</view>
 			
 			<view class="info-wapper" style="margin-top: 40upx;">
-				<label class="words-lbl">{{language['1_3'][type]}}</label>
+				<label class="words-lbl ml-2">{{language['1_3'][type]}}</label>
 				<input style="width: 400rpx;" name="csTimer" type="text" v-model="cs" password="true" class="input"  placeholder-class="graywords"/>
 			</view>
 			
