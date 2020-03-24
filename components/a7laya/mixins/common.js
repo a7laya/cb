@@ -39,7 +39,7 @@ export default {
 		if(!this.language){
 			// 获取语言列表
 			this.$H.get('/Lan/tableData').then(v=>{
-				if(v.msg === 'Login error') return uni.navigateTo({url:'/pages/index/index'})
+				if(v.msg === 'Login error') return uni.navigateTo({url:'/pages/login/login'})
 				uni.setStorageSync("language", v.data);
 			})
 			uni.setStorageSync('type',this.type)

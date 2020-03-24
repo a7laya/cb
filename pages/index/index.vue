@@ -94,10 +94,6 @@ export default {
 	onShow() {
 		console.log('onShow进入首页', this.language['page_title'][this.type]);
 	},
-	beforeMount() {
-		if(!this.language)
-		return uni.navigateTo({url:'/pages/login/login'})
-	},
 	methods: {
 		// 打开水表实时流量
 		openMeterList(meterType) {
