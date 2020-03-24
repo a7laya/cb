@@ -178,7 +178,7 @@
 					mask: true,
 					title: "请稍后..."
 				});
-				this.$H.post('/trashs/restore?id=' + me.trashId + '&table_name=' + me.trashTableName)
+				this.$H.post('/trashs/restore?id=' + me.selectid + '&table_name=' + me.trashTableName)
 					.then(res=>{
 						if(0===res.code){
 							// 添加节点至首部
@@ -202,13 +202,13 @@
 					mask: true,
 					title: "请稍后..."
 				});
-				this.$H.post('/trashs/delete?id=' + me.trashId + '&table_name=' + me.trashTableName)
+				this.$H.post('/trashs/delete?id=' + me.selectid + '&table_name=' + me.trashTableName)
 					.then(res=>{
 						if(0===res.code){
 							// 添加节点至首部
 							// debugger;
 							me.trashList.splice(me.trashIndex, 1);
-							me.trashId = "";
+							me.selectid = "";
 							me.trashTableName = ""
 						}
 						me.$refs.popupDelete.close()
