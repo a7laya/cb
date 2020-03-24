@@ -59,6 +59,9 @@
 		</view>
 		
 		<view class="footer-wapper">
+			<view class="footer-words bg-warning text-white" style="margin-top: 10upx;" @click="cleanStorage">
+				{{{cn:'清除缓存',en:'Clear cache',other:'キャッシュをクリア'}[type]}}
+			</view>
 			<view class="footer-words bg-danger text-white" style="margin-top: 10upx;" @click="logout">
 				{{language['page_logout'][type]}}
 			</view>
@@ -133,7 +136,9 @@
 			},
 			
 			cleanStorage() {
-				uni.clearStorageSync();
+				// uni.clearStorageSync();
+				uni.removeStorageSync("language");
+				uni.removeStorageSync("type");
 				uni.showToast({
 					title: "清理缓存成功",
 					mask: false,
@@ -158,6 +163,7 @@
 						// if (res.data.code == 0) {
 							// 如果服务器返回0，代表用户在服务端退出登录成功	
 							uni.removeStorageSync("userInfo");							
+							// uni.removeStorageSync("language");							
 							uni.navigateTo({
 								url: "../login/login"
 							})

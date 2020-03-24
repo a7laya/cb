@@ -50,7 +50,7 @@
 					<uni-collapse-item ref="add" :title="`${vdc.location}` + `  [${vdc.meter_id}]`" :show-animation="true"  thumb="../../static/icons/meter.png" >
 						<view class="data-block">
 							<view class="title">
-								<text class="title-text">水表ID</text>				
+								<text class="title-text">{{'水表' | $lan('meter')}}ID</text>				
 							</view>
 							<view class="value">
 								<text class="value-text">{{vdc.meter_id}}</text>				
@@ -58,7 +58,7 @@
 						</view>	
 						<view class="data-block">
 							<view class="title">
-								<text class="title-text">正向累积</text>				
+								<text class="title-text">{{'正向累积' | $lan('ftotal')}}</text>				
 							</view>
 							<view class="value">
 								<text class="value-text">{{vdc.FTOTAL}}</text>				
@@ -66,7 +66,7 @@
 						</view>	
 						<view class="data-block">
 							<view class="title">
-								<text class="title-text">反向累积</text>				
+								<text class="title-text">{{'反向累积' | $lan('rtotal')}}</text>				
 							</view>
 							<view class="value">
 								<text class="value-text">{{vdc.RTOTAL}}</text>				

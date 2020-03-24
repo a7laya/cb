@@ -88,9 +88,14 @@ export default {
 		};
 	},
 	onLoad() {
+		let me = this
 		console.log('onLoad进入首页');
+		if(!this.language)
+		return uni.navigateTo({url:'/pages/login/login'})
 	},
 	onShow() {
+		if(!this.language)
+		return uni.navigateTo({url:'/pages/login/login'})
 		console.log('onShow进入首页', this.language['page_title'][this.type]);
 	},
 	methods: {

@@ -36,7 +36,7 @@ export default {
 		}
 		// 
 		this.language = uni.getStorageSync('language')
-		this.type = uni.getStorageSync('type')
+		this.type = uni.getStorageSync('type') || 'cn'
 		
 	}
 }
