@@ -36,7 +36,15 @@ export default {
 		}
 		// 
 		this.language = uni.getStorageSync('language')
-		this.type = uni.getStorageSync('type') || 'cn'
+		if(!this.language){
+			// 获取语言列表
+			this.$H.get('/Lan/tableData').then(v=>{
+				if(v.msg === 'Login error') return uni.navigateTo({url:'/pages/index/index'})
+				uni.setStorageSync("language", v.data);
+			})
+			uni.setStorageSync('type',this.type)
+		}
+		this.type = uni.getStorageSync('type') || this.type
 		
 	}
 }
