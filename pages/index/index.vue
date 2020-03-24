@@ -61,7 +61,7 @@
 				<text class="text" @click="trash">{{language['1_4'][type]}}</text>
 			</uni-grid-item>
 			<uni-grid-item class="animated fadeInDown faster">
-				<text class="test" style="font-size: 80upx;" @click="setting">&#xe61f;</text>
+				<text class="test" style="font-size: 80upx;" @click="setting">&#xe7d6;</text>
 				<text class="text" @click="setting">{{language['3'][type]}}</text>
 			</uni-grid-item>
 		</uni-grid>

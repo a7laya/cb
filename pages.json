@@ -13,7 +13,9 @@
 		{
 		    "path" : "pages/login/login",
 		    "style" : {
-				"navigationBarTitleText": "登录"
+				"app-plus":{
+					"titleNView":false
+				}
 			}
 		}
 

@@ -1,7 +1,13 @@
 <template>
+	<view>
+	<nav-bar :showArrow="false">
+		<text class="test mr-2 text-white" style="font-size: 40upx;" @click="openMeterList('dc')">&#xe63b;</text>
+		{{titleObj[type]}}
+	</nav-bar>
+	<view class="w-100" style="height: 90rpx; background-color: #00c6dc;"></view>
 	<view class="body">
 		<form @submit="formSubmit">
-			<view class="d-flex position-absolute text-muted" style="top: 10rpx;right: 15rpx;">
+			<view class="d-flex position-absolute text-muted" style="top: 100rpx;right: 15rpx;">
 				<view class="mr-1" :class="{'active animated flipInX':type == 'cn'}" @click="setLanguageType('cn')">中文</view>|
 				<view class="mx-1" :class="{'active animated flipInX':type == 'en'}" @click="setLanguageType('en')">English</view>|
 				<view class="ml-1" :class="{'active animated flipInX':type == 'other'}" @click="setLanguageType('other')">日本語</view>
@@ -24,19 +30,26 @@
 			
 			<button  form-type="submit" style="margin-top: 60upx;width: 90%;" 
 			class="main-bg-hover-color text-white animated fadeInUp fast" 
-			hover-class="bg-primary">{{title}}</button>
+			hover-class="bg-primary">{{btn}}</button>
 		</form>
 		
 
-	</view>
+	</view></view>
 </template>
 
 
 <script>
+	import navBar from '@/components/a7laya/nav-bar.vue'
 	export default {
+		components:{navBar},
 		data() {
 			return {
 				titleObj: {
+					cn: "智慧水务",
+					en: "Intelligent water service",
+					other: "知恵と水の仕事"
+				},
+				btnObj: {
 					cn: "登录",
 					en: "Login",
 					other: "ログイン"
@@ -74,6 +87,9 @@
 			},
 			title(){
 				return this.titleObj[this.type]
+			},
+			btn(){
+				return this.btnObj[this.type]
 			}
 		},
 		methods: {

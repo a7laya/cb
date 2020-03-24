@@ -15,7 +15,7 @@
 			
 			<view class="info-wapper" style="margin-top: 40upx;">
 				<label class="words-lbl ml-2">{{language['1_3'][type]}}</label>
-				<input style="width: 400rpx;" name="csTimer" type="text" v-model="cs" password="true" class="input"  placeholder-class="graywords"/>
+				<input style="width: 400rpx;" name="csTimer" type="text" v-model="cs" class="input"  placeholder-class="graywords"/>
 			</view>
 			
 			<button type="primary" form-type="submit" class="main-bg-hover-color" style="margin-top: 60upx;width: 90%;">{{language['confirm'][type]}}</button>
